@@ -19,47 +19,95 @@
       </nav>
     </header>
 
-    <main class="p-6 md:flex md:items-start">
-      <h2 class="text-2xl font-semibold text-headingAccent md:w-1/5">
-        Willkommen
-      </h2>
-      <div class="bg-light_background text-background p-6 md:ml-6 md:w-4/5">
-        <p>
-          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.
-                    Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nicht als SPA.          Dies ist die Startseite deiner neuen Webseite mit klassischem Routing,
-          nich
-        </p>
+    <main class="p-6 flex flex-col items-center">
+      <div class="flex space-x-8 flex-wrap p-8">
+        <div
+          class="w-40 h-40 bg-boxDark text-creme flex items-center justify-center"
+        >
+          direkt
+        </div>
+
+        <div
+          class="w-40 h-40 bg-boxMid text-creme flex items-center justify-center"
+        >
+          offen
+        </div>
+
+        <div
+          class="w-40 h-40 bg-boxLight text-headingAccent flex items-center justify-center"
+        >
+          präzise
+        </div>
+      </div>
+      <div class="flex flex-col justify-center">
+        <h2 class="text-2xl font-semibold text-boxLight">
+          ➸ Richtungen erkennen
+        </h2>
+
+        <h2 class="text-2xl font-semibold text-boxLight">
+          ➸ Systeme verstehen
+        </h2>
+
+        <h2 class="text-2xl font-semibold text-boxLight">
+          ➸ Verbindungen hören
+        </h2>
+      </div>
+      <div class="flex justify-center gap-4 py-6">
+        <a
+          href="/dein-link"
+          class="bg-light_background text-primary px-4 py-2 rounded-lg font-medium hover:bg-boxDark hover:text-headingAccent transition-colors text-center"
+        >
+          Gruppen und<br />Coaching
+        </a>
+        <a
+          href="/dein-link"
+          class="bg-light_background text-primary px-4 py-2 rounded-lg font-medium hover:bg-boxDark hover:text-headingAccent transition-colors text-center"
+        >
+          Organisations-<br />entwicklung
+        </a>
+      </div>
+      <div class="flex justify-center space-x-2 mt-16 mb-8">
+        <img src="Logo_thick.svg" class="w-12 h-auto" alt="Logo" />
       </div>
 
+      <section class="text-cream mt-16">
+        <h2 class="text-2xl font-bold text-primary mb-6">Wer ist Annika?</h2>
 
+        <div class="grid grid-cols-[auto_auto] gap-x-4 gap-y-2">
+          <div>
+            Systemische Coachin
+            <span class="text-sm text-secondary"
+              >(<a href="https://www.syst.info/de">in Ausbildung</a>)</span
+            >
+          </div>
+          <div class="border-l border-primary pl-4 italic">Prozesse</div>
 
+          <div>
+            Organisationsentwicklerin
+            <span class="text-sm text-secondary"
+              >(<a href="https://www.isys.de/">iSYS</a>)</span
+            >
+          </div>
+          <div class="border-l border-primary pl-4 italic">Räume</div>
 
+          <div>
+            Softwareentwicklerin
+            <span class="text-sm text-secondary">(2015–2025)</span>
+          </div>
+          <div class="border-l border-primary pl-4 italic">Technologie</div>
+
+          <div>
+            Mathematikerin <span class="text-sm text-secondary">(B.Sc.)</span>
+          </div>
+          <div class="border-l border-primary pl-4 italic">Schärfe</div>
+
+          <div>
+            Volkswirtin <span class="text-sm text-secondary">(B.Sc.)</span>
+          </div>
+          <div class="border-l border-primary pl-4 italic">Dynamiken</div>
+        </div>
+      </section>
     </main>
-
     <footer class="bg-header p-4 text-center text-headingAccent mt-10">
       &copy; 2025 Annika Mari
     </footer>
