@@ -7,17 +7,7 @@
     <link href="/output.css" rel="stylesheet" />
   </head>
   <body class="bg-background text-creme font-sans">
-    <header class="bg-header_background p-4 flex justify-between items-center">
-      <div class="flex flex-row space-x-2">
-        <img src="Logo_thick.svg" class="w-20 h-auto" alt="Logo" />
-        <h1 class="text-xl font-bold text-headingAccent">Annika Mari</h1>
-      </div>
-
-      <nav>
-        <a href="/index.html" class="text-headingAccent mr-4">Home</a>
-        <a href="/pages/about.html" class="text-headingAccent">Über mich</a>
-      </nav>
-    </header>
+    <div id="header"></div>
 
     <main class="p-6 flex flex-col items-center">
       <div class="flex space-x-8 flex-wrap p-8">
@@ -54,7 +44,7 @@
       </div>
       <div class="flex justify-center gap-4 py-6">
         <a
-          href="/dein-link"
+          href="/Gruppen_und_Coaching.html"
           class="bg-light_background text-primary px-4 py-2 rounded-lg font-medium hover:bg-boxDark hover:text-headingAccent transition-colors text-center"
         >
           Gruppen und<br />Coaching
@@ -71,7 +61,9 @@
       </div>
 
       <section class="text-cream">
-        <h2 class="text-2xl font-bold text-primary mb-6">Wer ist Annika Mari?</h2>
+        <h2 class="text-2xl font-bold text-primary mb-6">
+          Wer ist Annika Mari?
+        </h2>
 
         <div class="grid grid-cols-[auto_auto] gap-x-4 gap-y-2">
           <div>
@@ -108,8 +100,7 @@
         </div>
       </section>
     </main>
-    <footer class="bg-header_background p-4 text-center text-headingAccent mt-10">
-      &copy; 2025 Annika Mari
-    </footer>
+    <div id="footer"></div>
+    <script src="/include.js"></script>
   </body>
 </html>
