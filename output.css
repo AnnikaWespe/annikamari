@@ -587,8 +587,16 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .mt-8 {
   margin-top: 2rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .flex {
@@ -621,10 +629,6 @@ video {
 
 .max-w-4xl {
   max-width: 56rem;
-}
-
-.basis-full {
-  flex-basis: 100%;
 }
 
 .cursor-pointer {
@@ -817,6 +821,10 @@ video {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-extrabold {
+  font-weight: 800;
 }
 
 .italic {
