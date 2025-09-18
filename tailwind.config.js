@@ -13,6 +13,7 @@ module.exports = {
         boxMid: "#845CA8",
         boxLight: "#D9C8E8",
         headingAccent: "#8a82b0",
+        headingAccentDark: "#544c78",
       },
     },
   },
