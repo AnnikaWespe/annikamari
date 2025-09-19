@@ -607,6 +607,10 @@ video {
   margin-top: 2rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -811,6 +815,16 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
 .pl-4 {
   padding-left: 1rem;
 }
@@ -920,6 +934,11 @@ video {
 .text-textOnBrighterBackground {
   --tw-text-opacity: 1;
   color: rgb(58 34 70 / var(--tw-text-opacity, 1));
+}
+
+.text-boxDark {
+  --tw-text-opacity: 1;
+  color: rgb(75 45 92 / var(--tw-text-opacity, 1));
 }
 
 .transition-colors {
