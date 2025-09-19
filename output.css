@@ -914,7 +914,7 @@ video {
 
 .text-textOnBlack {
   --tw-text-opacity: 1;
-  color: rgb(246 242 229 / var(--tw-text-opacity, 1));
+  color: rgb(138 130 176 / var(--tw-text-opacity, 1));
 }
 
 .text-textOnBrighterBackground {
@@ -940,29 +940,9 @@ video {
   /* groß genug für den Inhalt */
 }
 
-.hover\:bg-boxDark:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(75 45 92 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-creme:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(246 242 229 / var(--tw-bg-opacity, 1));
-}
-
 .hover\:bg-boxLight:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(217 200 232 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:bg-boxMid:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(132 92 168 / var(--tw-bg-opacity, 1));
-}
-
-.hover\:text-headingAccent:hover {
-  --tw-text-opacity: 1;
-  color: rgb(138 130 176 / var(--tw-text-opacity, 1));
 }
 
 .hover\:underline:hover {
