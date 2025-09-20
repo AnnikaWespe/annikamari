@@ -4,215 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Annika Mari</title>
+    <link rel="stylesheet" href="/libs/swiper/swiper-bundle.min.css" />
+
     <link href="/output.css" rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="assets/assets/Logo_whitesquare.svg" />
+
+    <link rel="icon" type="image/x-icon" href="/Logo_whitesquare.svg" />
   </head>
-  <body class="bg-background text-textOnBlack font-sans">
+  <body class="bg-background text-creme font-sans">
     <div id="header"></div>
+    <main>
+      <div class="flex justify-around mb-6 mt-2 space-x-2">
+        <button
+          class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary bg-background border-secondary border-2"
+          data-slide="0"
+        >
+          Angebot
+        </button>
+        <button
+          class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary"
+          data-slide="1"
+        >
+          About
+        </button>
+      </div>
 
-    <main class="p-6 flex flex-col items-center text-textOnBlack">
-      <section class="px-6 py-12 bg-background">
-        <!-- Gruppenangebot -->
-        <div class="max-w-4xl mx-auto mb-16 text-textOnBlack">
-          <h2 class="text-3xl font-bold mb-4 text-headingAccent">
-            Gruppe für systemische Simulation
-          </h2>
-          <p class="italic">
-            Ausgehend von beruflichen oder privaten Fragestellungen simulieren
-            wir Dynamiken und testen Handlungsspielräume.
-          </p>
-          <div class="flex justify-center space-x-2 mt-4 mb-4">
-            <img src="assets/Logo_thick.svg" class="w-12 h-auto" alt="Logo" />
-          </div>
-          <p class="mt-4">Jeden Sonntag zu wechselnden Uhrzeiten</p>
-          <p>Nähe U-Bahn Poccistraße</p>
-          <p class="mb-4">Teilnahme auf Spendenbasis</p>
-          <p class="mb-6">
-            Bei Interesse oder Fragen:
-            <span class="mailadresse font-bold hover:underline"></span>
-          </p>
-
-          <div class="bg-boxDark/50 p-4 rounded-lg mb-4">
-            <strong>Nächste Termine:</strong><br />
-            <table class="border-none">
-              <tr>
-                <td class="pr-2">28. September 2025</td>
-                <td class="pr-4">10:00</td>
-                <td>Plätze frei</td>
-              </tr>
-              <tr>
-                <td>5. Oktober 2025</td>
-                <td>16:00</td>
-                <td>Plätze frei</td>
-              </tr>
-              <tr>
-                <td>12. Oktober 2025</td>
-                <td>10:00</td>
-                <td>Plätze frei</td>
-              </tr>
-              <tr>
-                <td>19. Oktober 2025</td>
-                <td>16:00</td>
-                <td>Plätze frei</td>
-              </tr>
-            </table>
-          </div>
-
-          <details
-            class="bg-brighterBackground p-4 rounded-lg text-textOnBrighterBackground max-w-4xl mb-12 details"
-          >
-            <summary
-              class="cursor-pointer text-textAccentOnBrighterBackground font-semibold"
-            >
-              &nbsp;Mehr erfahren
-            </summary>
-            <div class="max-w-[49rem] mb-2 details-content">
-              <p class="text-lg mt-4">Ablauf</p>
-
-              <ul class="list-disc list-inside mt-2">
-                <li>Die Gruppe ist offen, Vorkenntnisse sind nicht nötig</li>
-                <li>
-                  Der Abend beginnt mit einem kurzen Ankommen und einer
-                  Einführung. Dann werden 2-3 Anliegen bearbeitet.
-                </li>
-                <li>
-                  Im Vorgespräch kann Persönliches geteilt oder auch abstrakt
-                  gearbeitet werden
-                </li>
-                <li>
-                  Auch ohne eigenes Anliegen profitierst du von der Arbeit in
-                  der Gruppe.
-                </li>
-                <li>
-                  Wenn du schon öfter teilgenommen hast ohne ein eigenes
-                  Anliegen einzubringen, wirst du bevorzugt berücksichtigt.
-                </li>
-              </ul>
-              <div class="flex justify-center space-x-2 mt-4 mb-4">
-                <img src="assets/Logo_whitesquare.svg" class="w-6 h-auto" alt="Logo" />
-              </div>
-              <p class="text-lg">Methode</p>
-              <p class="mt-2">
-                Wir arbeiten mit Systemischen Strukturaufstellungen (SySt®) nach
-                Insa Sparrer und Matthias Varga von Kibéd. Diese Methode macht
-                komplexe Fragestellungen mithilfe der Gruppe räumlich sichtbar
-                und ermöglicht es, Muster und Wechselwirkungen zu erkennen.
-                Durch das Erproben unterschiedlicher Konstellationen entsteht
-                Klarheit darüber, welche Handlungsoptionen zur Verfügung stehen.
-              </p>
-              <p class="mt-2">
-                Wer Aufstellungen nach Bert Hellinger kennt: SySt® arbeitet
-                unabhängig davon. Der Ansatz ist nicht autoritär, sondern
-                dialogisch und lösungsorientiert.
-              </p>
-              <div class="flex justify-center space-x-2 mt-4 mb-4">
-                <img src="assets/Logo_whitesquare.svg" class="w-6 h-auto" alt="Logo" />
-              </div>
-              <p class="text-lg">Feedback</p>
-              <p class="mt-2 italic">
-                "Annika hat mit viel Feingefühl mein Thema aufgestellt. Sie
-                machte eine für mich festgefahrene Situation sichbarer und ich
-                konnte mit einem Gewinn von innerer Kraft und Zuversicht
-                gestärkt nach Hause radeln. Danke!"
-              </p>
-              <p class="mt-1">A.S., München</p>
-              <p class="mt-3 italic">
-                "Annika führt Aufstellungen mit einer besonders ruhigen und
-                einfühlsamen Art. Die Gruppendynamik und innere Stimmung konnten
-                sich nach und nach von selbst entfalten. Mit Annika habe ich
-                Aufstellungen neu entdeckt – und ich wäre jederzeit gerne wieder
-                dabei."
-              </p>
-              <p class="mt-1">T., München</p>
-
-              <div class="flex justify-center space-x-2 mt-4 mb-4">
-                <img src="assets/Logo_whitesquare.svg" class="w-6 h-auto" alt="Logo" />
-              </div>
-              <p class="text-lg">Hinweis</p>
-
-              <p class="mt-2">
-                Diese Gruppe ist kein therapeutisches Angebot. Teilnahme setzt
-                psychische Stabilität und Eigenverantwortung voraus.
-                Detaillierte Teilnahmebedingungen findest du
-                <a
-                  href="assets/Teilnahmebedingungen.pdf"
-                  target="_blank"
-                  class="text-textAccentOnBrighterBackground font-medium"
-                  >hier</a
-                >.
-              </p>
-            </div>
-          </details>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div id="org_range" class="swiper-slide"></div>
+          <div id="org_about" class="swiper-slide"></div>
         </div>
-
-        <!-- Einzelcoaching -->
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl font-bold text-headingAccent mb-4">
-            Einzelcoaching
-          </h2>
-          <p class="italic">Für persönliche Anliegen & berufliche Klärungen</p>
-          <div class="flex justify-center space-x-2 mt-4 mb-4">
-            <img src="assets/Logo_thick.svg" class="w-12 h-auto" alt="Logo" />
-          </div>
-          <ul class="list-disc list-inside mb-4">
-            <li>45–75 Minuten</li>
-            <li>Online oder in Präsenz</li>
-            <li>Erstgespräch auf Spendenbasis</li>
-          </ul>
-
-          <p class="mb-6">
-            Bei Interesse oder Fragen:
-            <span class="mailadresse font-bold hover:underline"></span>
-          </p>
-
-          <details
-            class="bg-brighterBackground p-4 rounded-lg text-purple-300 details"
-          >
-            <summary
-              class="cursor-pointer text-textAccentOnBrighterBackground font-semibold"
-            >
-              &nbsp;Mehr erfahren
-            </summary>
-            <div
-              class="max-w-[49rem] text-textOnBrighterBackground mb-2 details-content"
-            >
-              <p class="text-lg mt-4">Methode</p>
-              <p class="mt-2">
-                Im Einzelcoaching arbeiten wir strukturiert an einem Anliegen,
-                das dir wichtig ist. Das kann aus deinem beruflichen,
-                persönlichen oder familiären Kontext stammen. <br />Hier arbeite
-                ich sowohl räumlich als auch hypnosystemisch, also mit inneren
-                Bildern.
-              </p>
-              <div class="flex justify-center space-x-2 mt-4 mb-4">
-                <img src="assets/Logo_whitesquare.svg" class="w-6 h-auto" alt="Logo" />
-              </div>
-              <p class="text-lg">Feedback</p>
-              <p class="mt-2 italic">
-                "Bei Annika fühle ich mich immer gut aufgehoben und kreativ, auf
-                den Moment achtend begleitet. Mit ihr eröffnen sich neue
-                Perspektiven und Möglichkeitsräume – oft reicht schon eine halbe
-                Stunde, um ein gutes Stück weiterzukommen."
-              </p>
-              <p class="mt-1">Valerian, Wien</p>
-
-              <div class="flex justify-center space-x-2 mt-4 mb-4">
-                <img src="assets/Logo_whitesquare.svg" class="w-6 h-auto" alt="Logo" />
-              </div>
-              <p class="text-lg">Hinweis</p>
-
-              <p class="mt-2">
-                Coaching ist keine Therapie und ersetzt keine ärztliche oder
-                psychologische Behandlung. Es richtet sich an Menschen, die
-                eigenverantwortlich an ihren Themen arbeiten möchten und nicht
-                in akuten Krisen stehen.
-              </p>
-            </div>
-          </details>
-        </div>
-      </section>
+      </div>
     </main>
     <div id="footer"></div>
+    <script src="/libs/swiper/swiper-bundle.min.js"></script>
+
     <script src="/include.js"></script>
   </body>
 </html>

@@ -65,13 +65,39 @@ document.querySelectorAll(".details").forEach((details) => {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    var swiper = new Swiper(".mySwiper", {
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    });
+  const swiper = new Swiper(".mySwiper", {
+    // dein bestehender Swiper config
+    loop: false,
+    on: {
+      slideChange: updateTabs,
+    },
+  });
 
+  const tabs = document.querySelectorAll(".slider-tab");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const index = parseInt(tab.dataset.slide);
+      swiper.slideTo(index);
+    });
+  });
+
+  function updateTabs() {
+    tabs.forEach((tab, idx) => {
+      if (idx === swiper.activeIndex) {
+        // tab.classList.add("");
+        tab.classList.add("border-secondary");
+        tab.classList.add("border-2");
+      } else {
+        // tab.classList.remove("");
+        tab.classList.remove("border-secondary");
+        tab.classList.remove("border-2");
+      }
+    });
+  }
+
+  updateTabs(); // initial aktiv setzen
 });
+
 
 
