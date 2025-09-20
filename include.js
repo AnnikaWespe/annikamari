@@ -66,7 +66,6 @@ document.querySelectorAll(".details").forEach((details) => {
 
 document.addEventListener("DOMContentLoaded", function () {
   const swiper = new Swiper(".mySwiper", {
-    // dein bestehender Swiper config
     loop: false,
     on: {
       slideChange: updateTabs,
