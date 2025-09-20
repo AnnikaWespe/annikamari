@@ -4,23 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Annika Mari</title>
+        <link rel="stylesheet" href="/libs/swiper/swiper-bundle.min.css">
+
     <link href="/output.css" rel="stylesheet" />
+
     <link rel="icon" type="image/x-icon" href="/Logo_whitesquare.svg" />
+    <style>    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #000;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #444;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
   </head>
   <body class="bg-background text-creme font-sans">
     <div id="header"></div>
+<main>
 
-    <main class="p-6 flex flex-col items-center">
-      <section class="px-6 py-12 bg-background text-creme">
-        <!-- Gruppenangebot -->
-        <div class="max-w-4xl mx-auto mb-16">
-          <h2 class="text-3xl font-bold text-headingAccent mb-4">
-            -- im Aufbau --
-          </h2>
-          
-      </section>
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+
+
+
+
+
+
     </main>
     <div id="footer"></div>
+            <script src="/libs/swiper/swiper-bundle.min.js"></script>
+
     <script src="/include.js"></script>
   </body>
 </html>

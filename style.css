@@ -10,5 +10,5 @@
   padding: 0 1rem;
 }
 .details-content.open {
-  max-height: 1000px; /* groß genug für den Inhalt */
+  max-height: 3000px; /* groß genug für den Inhalt */
 }
