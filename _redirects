@@ -1,3 +1,2 @@
-# Redirects from what the browser requests to what we serve
-/*                /
-/testreroute    /
+/*    /    200
+/testreroute    /    200
