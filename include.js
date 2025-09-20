@@ -8,10 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(res => res.text())
     .then(data => document.getElementById("footer").innerHTML = data);
 
-      fetch("/pages/footer.html")
+      fetch("/pages/coaching_range.html")
     .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
-});
+    .then(data => document.getElementById("org_range").innerHTML = data);
+
+          fetch("/pages/coaching_about.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("org_about").innerHTML = data);
+  });
 
 document.querySelectorAll(".details").forEach((details) => {
   const summary = details.querySelector("summary");
