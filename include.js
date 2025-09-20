@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
   fetch("/pages/footer.html")
     .then(res => res.text())
     .then(data => document.getElementById("footer").innerHTML = data);
+
+      fetch("/pages/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
 });
 
 document.querySelectorAll(".details").forEach((details) => {
@@ -58,10 +62,6 @@ document.querySelectorAll(".details").forEach((details) => {
 
 document.addEventListener("DOMContentLoaded", function () {
     var swiper = new Swiper(".mySwiper", {
-      pagination: {
-        el: ".swiper-pagination",
-        type: "progressbar",
-      },
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
