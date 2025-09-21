@@ -1,70 +1,28 @@
-
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("/pages/header.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("header").innerHTML = data);
-
-  fetch("/pages/footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
-
-      fetch("/pages/coaching_range.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("org_range").innerHTML = data);
-
-          fetch("/pages/coaching_about.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("org_about").innerHTML = data);
-  });
-
-document.querySelectorAll(".details").forEach((details) => {
-  const summary = details.querySelector("summary");
-  const content = details.querySelector(".details-content");
-
-  // Anfangszustand
-  if (details.open) content.classList.add("open");
-
-  summary.addEventListener("click", (e) => {
-    e.preventDefault(); // Verhindert das sofortige Öffnen/Schließen
-
-    if (details.open) {
-      // Schließen: zuerst Animation auslösen
-      content.classList.remove("open");
-
-      // Dann Verzögerung fürs Zuklappen
-      setTimeout(() => {
-        details.removeAttribute("open");
-      }, 300); // Dauer der CSS transition
-    } else {
-      // Öffnen
-      details.setAttribute("open", "true");
-      requestAnimationFrame(() => {
-        content.classList.add("open");
-      });
-    }
-  });
+  loadHeaderAndFooterAndSwiperContent();
+  loadDetailsBox();
+  loadEmailAddress();
+  loadSwiper();
 });
+cleanPath();
 
-  const user = "kontakt";
-  const domain = "annikamari.de";
-  const mail = `${user}@${domain}`;
-  const linktext = `${mail}`;
-
-  document.querySelectorAll(".mailadresse").forEach(el => {
-    el.innerHTML = `<a href="mailto:${mail}">${linktext}</a>`;
-  });
-
-  // Liste der erlaubten Pfade – passe bei Bedarf an
-  const allowedPaths = ['/', '/about', '/kontakt']; // usw.
+function cleanPath() {
+  const allowedPaths = [
+    "/",
+    "/Einzelpersonen",
+    "/Einzelpersonen.html",
+    "/Organisationen",
+    "/Organisationen.html",
+  ];
 
   const currentPath = window.location.pathname;
 
   if (!allowedPaths.includes(currentPath)) {
-    window.history.replaceState({}, '', '/');
+    window.history.replaceState({}, "", "/");
   }
+}
 
-
-document.addEventListener("DOMContentLoaded", function () {
+function loadSwiper() {
   const swiper = new Swiper(".mySwiper", {
     loop: false,
     on: {
@@ -96,7 +54,70 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   updateTabs(); // initial aktiv setzen
-});
+}
 
+function loadDetailsBox() {
+  document.querySelectorAll(".details").forEach((details) => {
+    const summary = details.querySelector("summary");
+    const content = details.querySelector(".details-content");
 
+    // Anfangszustand
+    if (details.open) content.classList.add("open");
 
+    summary.addEventListener("click", (e) => {
+      e.preventDefault(); // Verhindert das sofortige Öffnen/Schließen
+
+      if (details.open) {
+        // Schließen: zuerst Animation auslösen
+        content.classList.remove("open");
+
+        // Dann Verzögerung fürs Zuklappen
+        setTimeout(() => {
+          details.removeAttribute("open");
+        }, 300); // Dauer der CSS transition
+      } else {
+        // Öffnen
+        details.setAttribute("open", "true");
+        requestAnimationFrame(() => {
+          content.classList.add("open");
+        });
+      }
+    });
+  });
+}
+
+function loadEmailAddress() {
+  const user = "kontakt";
+  const domain = "annikamari.de";
+  const mail = `${user}@${domain}`;
+  const linktext = `${mail}`;
+
+  document.querySelectorAll(".mailadresse").forEach((el) => {
+    el.innerHTML = `<a href="mailto:${mail}">${linktext}</a>`;
+    console.log(el);
+  });
+}
+
+function loadHeaderAndFooterAndSwiperContent() {
+  fetch("/pages/header.html")
+    .then((res) => res.text())
+    .then((data) => (document.getElementById("header").innerHTML = data));
+
+  fetch("/pages/footer.html")
+    .then((res) => res.text())
+    .then((data) => (document.getElementById("footer").innerHTML = data));
+
+  fetch("/pages/coaching_range.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("coaching_range").innerHTML = data;
+      loadEmailAddress();
+    });
+
+  fetch("/pages/coaching_about.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("coaching_about").innerHTML = data;
+      loadEmailAddress();
+    });
+}
