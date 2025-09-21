@@ -94,7 +94,6 @@ function loadEmailAddress() {
 
   document.querySelectorAll(".mailadresse").forEach((el) => {
     el.innerHTML = `<a href="mailto:${mail}">${linktext}</a>`;
-    console.log(el);
   });
 }
 
