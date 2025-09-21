@@ -109,14 +109,20 @@ function loadHeaderAndFooterAndSwiperContent() {
   fetch("/pages/coaching_range.html")
     .then((res) => res.text())
     .then((data) => {
-      document.getElementById("coaching_range").innerHTML = data;
+      const element = document.getElementById("coaching_range");
+      if (element) {
+        element.innerHTML = data;
+      }
       loadEmailAddress();
     });
 
   fetch("/pages/coaching_about.html")
     .then((res) => res.text())
     .then((data) => {
-      document.getElementById("coaching_about").innerHTML = data;
+      const element = document.getElementById("coaching_about");
+      if (element) {
+        element.innerHTML = data;
+      }
       loadEmailAddress();
     });
 }
