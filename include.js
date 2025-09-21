@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  loadFooterAndSwiperContent();
+  loadContent();
   loadDetailsBox();
   loadEmailAddress();
   loadSwiper();
@@ -98,11 +98,17 @@ function loadEmailAddress() {
   });
 }
 
-function loadFooterAndSwiperContent() {
+function loadContent() {
 
-  fetch("/pages/footer.html")
+  fetch("/impressum.html")
     .then((res) => res.text())
-    .then((data) => (document.getElementById("footer").innerHTML = data));
+    .then((data) => {
+      const element = document.getElementById("impressum");
+      if (element) {
+        element.innerHTML = data;
+      }
+      loadEmailAddress();
+    });
 
   fetch("/pages/coaching_range.html")
     .then((res) => res.text())

@@ -29,9 +29,12 @@
           setRoute() {
             this.route =
               window.location.hash?.replace("#", "") || "home";
+              console.log("setting route")
           },
           navigate(to) {
             window.location.hash = to;
+                          console.log("navigate")
+
           },
         };
       }
@@ -70,23 +73,54 @@
       </header>
 
       <main class="p-6 flex flex-col items-center" x-show="route === 'home'">
+     
+
         <div class="flex flex-wrap justify-center gap-2 p-8">
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-primary border-2 text-creme flex items-center justify-center"
+            class="animate-[boxEnter_0.8s_ease-out] sm:w-40 sm:h-40 w-32 h-32 border-primary border-2 text-creme flex items-center justify-center"
           >
             direkt
           </div>
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-secondary border-2 text-creme flex items-center justify-center"
+            class="animate-[boxEnter_0.6s_ease-out] sm:w-40 sm:h-40 w-32 h-32 border-secondary border-2 text-creme flex items-center justify-center"
           >
             offen
           </div>
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-creme border-2 text-creme flex items-center justify-center mx-auto"
+            class="animate-[boxEnter_0.4s_ease-out] sm:w-40 sm:h-40 w-32 h-32 border-creme border-2 text-creme flex items-center justify-center mx-auto"
           >
             präzise
           </div>
         </div>
+
+
+        <div class="flex space-x-6 mt-16 justify-center">
+  <div
+    class="w-40 h-40 flex items-center justify-center border border-pink-600 text-white font-light
+           animate-[realisticBounce_1.4s_ease-out] delay-[0ms]"
+  >
+    direkt
+  </div>
+
+  <div
+    class="w-40 h-40 flex items-center justify-center border border-pink-400 text-white font-light
+           animate-[realisticBounce_1.4s_ease-out] delay-[180ms]"
+  >
+    offen
+  </div>
+
+  <div
+    class="w-40 h-40 flex items-center justify-center border border-pink-200 text-white font-light
+           animate-[realisticBounce_1.4s_ease-out] delay-[360ms]"
+  >
+    präzise
+  </div>
+</div>
+
+        
+
+
+
 
         <div class="flex flex-col justify-center text-textOnBlack">
           <h2 class="text-2xl font-semibold text-center">schauen.</h2>
@@ -190,7 +224,13 @@
 
       </main>
       <main id="organisationen" x-show="route === 'organisationen'"></main>
+      <main id="impressum" x-show="route === 'impressum'" class="bg-brighterBackground text-textOnBrighterBackground p-4"></main>
+              <footer class="bg-header_background p-4 flex justify-between items-center text-headingAccent mt-10">
+      <div>&copy; 2025 Annika Mari · Internationals Welcome</div>
+      <button @click="navigate('impressum')">
+        Impressum · Datenschutz</button>
+    </footer>
     </div>
-    <div id="footer"></div>
+
   </body>
 </html>
