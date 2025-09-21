@@ -98,13 +98,20 @@ function loadEmailAddress() {
 }
 
 function loadHeaderAndFooterAndSwiperContent() {
-  fetch("/pages/header.html")
-    .then((res) => res.text())
-    .then((data) => (document.getElementById("header").innerHTML = data));
 
   fetch("/pages/footer.html")
     .then((res) => res.text())
     .then((data) => (document.getElementById("footer").innerHTML = data));
+
+      fetch("/Einzelpersonen.html")
+    .then((res) => res.text())
+    .then((data) => {
+      const element = document.getElementById("einzelpersonen");
+      if (element) {
+        element.innerHTML = data;
+      }
+      loadEmailAddress();
+    });
 
   fetch("/pages/coaching_range.html")
     .then((res) => res.text())
@@ -120,6 +127,16 @@ function loadHeaderAndFooterAndSwiperContent() {
     .then((res) => res.text())
     .then((data) => {
       const element = document.getElementById("coaching_about");
+      if (element) {
+        element.innerHTML = data;
+      }
+      loadEmailAddress();
+    });
+
+          fetch("/Organisationen.html")
+    .then((res) => res.text())
+    .then((data) => {
+      const element = document.getElementById("organisationen");
       if (element) {
         element.innerHTML = data;
       }

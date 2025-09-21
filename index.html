@@ -15,107 +15,159 @@
       property="og:description"
       content="Coaching und Systemische Simulation"
     />
-    <meta property="og:image" content="https://www.annikamari.de/assets/Logo_whitesquare" />
+    <meta
+      property="og:image"
+      content="https://www.annikamari.de/assets/Logo_whitesquare"
+    />
+    <script src="/libs/swiper/swiper-bundle.min.js"></script>
+    <script defer src="/libs/alpinejs/dist/cdn.min.js"></script>
+    <script src="/include.js"></script>
+    <script>
+      function router() {
+        return {
+          route: "",
+          setRoute() {
+            this.route =
+              window.location.hash?.replace("#", "") || "home";
+          },
+          navigate(to) {
+            window.location.hash = to;
+          },
+        };
+      }
+    </script>
   </head>
   <body class="bg-background text-secondary font-sans">
-    <div id="header"></div>
-
-    <main class="p-6 flex flex-col items-center">
-      <div class="flex flex-wrap justify-center gap-2 p-8">
-        <div
-          class="sm:w-40 sm:h-40 w-32 h-32 bg-boxDark text-creme flex items-center justify-center"
-        >
-          direkt
-        </div>
-        <div
-          class="sm:w-40 sm:h-40 w-32 h-32 bg-boxMid text-creme flex items-center justify-center"
-        >
-          offen
-        </div>
-        <div
-          class="sm:w-40 sm:h-40 w-32 h-32 bg-boxLight text-headingAccentDark flex items-center justify-center mx-auto"
-        >
-          präzise
-        </div>
-      </div>
-
-      <div class="flex flex-col justify-center text-textOnBlack">
-        <h2 class="text-2xl font-semibold text-center">schauen.</h2>
-
-        <h2 class="text-2xl font-semibold text-center">ordnen.</h2>
-
-        <h2 class="text-2xl font-semibold text-center">bewegen.</h2>
-      </div>
-      <div class="flex justify-center gap-4 py-10">
-        <a
-          href="/Einzelpersonen.html"
-          class="bg-brighterBackground text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
-        >
-          Coaching und<br />Gruppen
+    <div
+      x-data="router()"
+      x-init="setRoute(); window.addEventListener('hashchange', () => setRoute())"
+    >
+      <header
+        class="bg-header_background p-4 flex justify-between items-center"
+      >
+        <a href="/index.html">
+          <div class="flex flex-row space-x-2">
+            <img src="assets/Logo.svg" class="w-20 h-auto" alt="Logo" />
+            <h1 class="text-lg sm:text-xl font-bold text-headingAccent">
+              Annika <span class="sm:hidden"><br /></span>Mari
+            </h1>
+          </div>
         </a>
-        <a
-          href="/Organisationen.html"
-          class="bg-brighterBackground text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
-        >
-          Organisations-<br />entwicklung</a
-        >
-      </div>
-      <div class="flex justify-center space-x-2 mt-4 mb-16">
-        <img src="assets/Logo_thick.svg" class="w-12 h-auto" alt="Logo" />
-      </div>
+        <nav>
+          <button
+            class="text-headingAccent text-xs sm:text-base mr-4"
+            @click="navigate('einzelpersonen')"
+          >
+            Einzelpersonen
+          </button>
+          <button
+            class="text-headingAccent text-xs sm:text-base mr-4"
+            @click="navigate('organisationen')"
+          >
+            Organisationen
+          </button>
+        </nav>
+      </header>
 
-      <section class="text-cream">
-        <h2 class="text-2xl font-bold text-primary mb-6">
-          Wer ist Annika Mari?
-        </h2>
-
-        <div class="grid grid-cols-[auto_auto] gap-x-4 gap-y-2">
-          <div>
-            Systemische Coachin
-            <span class="text-sm text-textOnBlack">(SySt, Hypnosystemik)</span>
+      <main class="p-6 flex flex-col items-center" x-show="route === 'home'">
+        <div class="flex flex-wrap justify-center gap-2 p-8">
+          <div
+            class="sm:w-40 sm:h-40 w-32 h-32 border-primary border-2 text-creme flex items-center justify-center"
+          >
+            direkt
           </div>
-          <div class="border-l border-primary pl-4 italic">Prozesse</div>
-
-          <div>
-            Organisationsentwicklerin
-            <span class="text-sm text-headingAccent"
-              >(bei
-              <a
-                href="https://www.isys.de/"
-                target="_blank"
-                class="italic text-headingAccent"
-                >iSYS</a
-              >)</span
-            >
+          <div
+            class="sm:w-40 sm:h-40 w-32 h-32 border-secondary border-2 text-creme flex items-center justify-center"
+          >
+            offen
           </div>
-          <div class="border-l border-primary pl-4 italic">Räume</div>
-
-          <div>
-            Softwareentwicklerin
-            <a
-              target="_blank"
-              href="https://softwareentwicklung.annikamari.de/"
-              class="text-sm italic text-headingAccent"
-              >(mehr dazu)</a
-            >
+          <div
+            class="sm:w-40 sm:h-40 w-32 h-32 border-creme border-2 text-creme flex items-center justify-center mx-auto"
+          >
+            präzise
           </div>
-          <div class="border-l border-primary pl-4 italic">Technologie</div>
-
-          <div>
-            Mathematikerin <span class="text-sm text-textOnBlack">(B.Sc.)</span>
-          </div>
-          <div class="border-l border-primary pl-4 italic">Schärfe</div>
-
-          <div>
-            Volkswirtin <span class="text-sm text-textOnBlack">(B.Sc.)</span>
-          </div>
-          <div class="border-l border-primary pl-4 italic">Dynamiken</div>
         </div>
-      </section>
-    </main>
-    <div id="footer"></div>
-    <script src="/libs/swiper/swiper-bundle.min.js"></script>
 
-    <script src="/include.js"></script>
+        <div class="flex flex-col justify-center text-textOnBlack">
+          <h2 class="text-2xl font-semibold text-center">schauen.</h2>
+
+          <h2 class="text-2xl font-semibold text-center">ordnen.</h2>
+
+          <h2 class="text-2xl font-semibold text-center">bewegen.</h2>
+        </div>
+        <div class="flex justify-center gap-4 py-10">
+          <a
+            href="/Einzelpersonen.html"
+            class="bg-brighterBackground text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
+          >
+            Coaching und<br />Gruppen
+          </a>
+          <a
+            href="/Organisationen.html"
+            class="bg-brighterBackground text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
+          >
+            Organisations-<br />entwicklung</a
+          >
+        </div>
+        <div class="flex justify-center space-x-2 mt-4 mb-16">
+          <img src="assets/Logo_thick.svg" class="w-12 h-auto" alt="Logo" />
+        </div>
+
+        <section class="text-cream">
+          <h2 class="text-2xl font-bold text-primary mb-6">
+            Wer ist Annika Mari?
+          </h2>
+
+          <div class="grid grid-cols-[auto_auto] gap-x-4 gap-y-2">
+            <div>
+              Systemische Coachin
+              <span class="text-sm text-textOnBlack"
+                >(SySt, Hypnosystemik)</span
+              >
+            </div>
+            <div class="border-l border-primary pl-4 italic">Prozesse</div>
+
+            <div>
+              Organisationsentwicklerin
+              <span class="text-sm text-headingAccent"
+                >(bei
+                <a
+                  href="https://www.isys.de/"
+                  target="_blank"
+                  class="italic text-headingAccent"
+                  >iSYS</a
+                >)</span
+              >
+            </div>
+            <div class="border-l border-primary pl-4 italic">Räume</div>
+
+            <div>
+              Softwareentwicklerin
+              <a
+                target="_blank"
+                href="https://softwareentwicklung.annikamari.de/"
+                class="text-sm italic text-headingAccent"
+                >(mehr dazu)</a
+              >
+            </div>
+            <div class="border-l border-primary pl-4 italic">Technologie</div>
+
+            <div>
+              Mathematikerin
+              <span class="text-sm text-textOnBlack">(B.Sc.)</span>
+            </div>
+            <div class="border-l border-primary pl-4 italic">Schärfe</div>
+
+            <div>
+              Volkswirtin <span class="text-sm text-textOnBlack">(B.Sc.)</span>
+            </div>
+            <div class="border-l border-primary pl-4 italic">Dynamiken</div>
+          </div>
+        </section>
+      </main>
+      <main id="einzelpersonen" x-show="route === 'einzelpersonen'"></main>
+      <main id="organisationen" x-show="route === 'organisationen'"></main>
+    </div>
+    <div id="footer"></div>
   </body>
 </html>
