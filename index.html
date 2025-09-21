@@ -7,13 +7,16 @@
     <link href="/output.css" rel="stylesheet" />
     <link rel="stylesheet" href="/libs/swiper/swiper-bundle.min.css" />
     <link rel="icon" type="image/x-icon" href="assets/Logo_whitesquare.svg" />
-    <meta property="og:title" content="Annika Mari – Räume für Entwicklung und neue Perspektiven" />
+    <meta
+      property="og:title"
+      content="Annika Mari – Räume für Entwicklung und neue Perspektiven"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:url" content="https://annikamari.de" />
     <meta
       property="og:description"
-      content="Systemische Simulation, Coaching & Organisationsberatung – klar, offen, technisch versiert. Für Menschen und Strukturen."
+      content="Systemische Simulation, Coaching & Organisationsberatung – klar, offen, technisch versiert"
     />
     <meta
       property="og:image"
@@ -27,8 +30,7 @@
         return {
           route: "",
           setRoute() {
-            this.route =
-              window.location.hash?.replace("#", "") || "home";
+            this.route = window.location.hash?.replace("#", "") || "home";
           },
           navigate(to) {
             window.location.hash = to;
@@ -70,8 +72,6 @@
       </header>
 
       <main class="p-6 flex flex-col items-center" x-show="route === 'home'">
-     
-
         <div class="flex flex-wrap justify-center gap-2 p-8">
           <div
             class="sm:w-40 sm:h-40 w-32 h-32 border-secondary border-2 text-secondary flex items-center justify-center font-bold"
@@ -89,12 +89,6 @@
             präzise
           </div>
         </div>
-
-
-        
-
-
-
 
         <div class="flex flex-col justify-center text-textOnBlack">
           <h2 class="text-2xl font-semibold text-center mb-2">schauen.</h2>
@@ -174,7 +168,7 @@
         </section>
       </main>
       <main  x-show="route === 'einzelpersonen'">
-              <div class="flex justify-around mb-6 mt-2 space-x-2">
+              <div class="flex justify-around md:justify-evenly mb-6 mt-2">
         <button
           class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary bg-background border-secondary border-2"
           data-slide="0"
@@ -198,13 +192,17 @@
 
       </main>
       <main id="organisationen" x-show="route === 'organisationen'"></main>
-      <main id="impressum" x-show="route === 'impressum'" class="bg-brighterBackground text-textOnBrighterBackground p-4"></main>
-              <footer class="bg-header_background p-4 flex justify-between items-center text-headingAccent mt-10">
-      <div>&copy; 2025 Annika Mari · Internationals Welcome</div>
-      <button @click="navigate('impressum')">
-        Impressum · Datenschutz</button>
-    </footer>
+      <main
+        id="impressum"
+        x-show="route === 'impressum'"
+        class="bg-brighterBackground text-textOnBrighterBackground p-4"
+      ></main>
+      <footer
+        class="bg-header_background p-4 flex justify-between items-center text-headingAccent mt-10"
+      >
+        <div>&copy; 2025 Annika Mari · Internationals Welcome</div>
+        <button @click="navigate('impressum')">Impressum · Datenschutz</button>
+      </footer>
     </div>
-
   </body>
 </html>
