@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  loadHeaderAndFooterAndSwiperContent();
+  loadFooterAndSwiperContent();
   loadDetailsBox();
   loadEmailAddress();
   loadSwiper();
@@ -36,6 +36,7 @@ function loadSwiper() {
     tab.addEventListener("click", () => {
       const index = parseInt(tab.dataset.slide);
       swiper.slideTo(index);
+      console.log("herer")
     });
   });
 
@@ -97,21 +98,11 @@ function loadEmailAddress() {
   });
 }
 
-function loadHeaderAndFooterAndSwiperContent() {
+function loadFooterAndSwiperContent() {
 
   fetch("/pages/footer.html")
     .then((res) => res.text())
     .then((data) => (document.getElementById("footer").innerHTML = data));
-
-      fetch("/Einzelpersonen.html")
-    .then((res) => res.text())
-    .then((data) => {
-      const element = document.getElementById("einzelpersonen");
-      if (element) {
-        element.innerHTML = data;
-      }
-      loadEmailAddress();
-    });
 
   fetch("/pages/coaching_range.html")
     .then((res) => res.text())

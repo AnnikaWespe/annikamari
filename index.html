@@ -165,7 +165,30 @@
           </div>
         </section>
       </main>
-      <main id="einzelpersonen" x-show="route === 'einzelpersonen'"></main>
+      <main  x-show="route === 'einzelpersonen'">
+              <div class="flex justify-around mb-6 mt-2 space-x-2">
+        <button
+          class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary bg-background border-secondary border-2"
+          data-slide="0"
+        >
+          Angebot
+        </button>
+        <button
+          class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary"
+          data-slide="1"
+        >
+          About
+        </button>
+      </div>
+
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div id="coaching_range" class="swiper-slide"></div>
+          <div id="coaching_about" class="swiper-slide"></div>
+        </div>
+      </div>
+
+      </main>
       <main id="organisationen" x-show="route === 'organisationen'"></main>
     </div>
     <div id="footer"></div>
