@@ -667,6 +667,12 @@ video {
   cursor: pointer;
 }
 
+.select-text {
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
+}
+
 .list-inside {
   list-style-position: inside;
 }
@@ -857,6 +863,10 @@ video {
   line-height: 2.25rem;
 }
 
+.text-\[1\.1em\] {
+  font-size: 1.1em;
+}
+
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -877,16 +887,9 @@ video {
   line-height: 1rem;
 }
 
-.text-\[\.25em\] {
-  font-size: .25em;
-}
-
-.text-\[1\.5em\] {
-  font-size: 1.5em;
-}
-
-.text-\[1\.1em\] {
-  font-size: 1.1em;
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -958,6 +961,14 @@ video {
   color: rgb(58 34 70 / var(--tw-text-opacity, 1));
 }
 
+.underline {
+  text-decoration-line: underline;
+}
+
+.underline-offset-2 {
+  text-underline-offset: 2px;
+}
+
 .transition-colors {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -983,9 +994,24 @@ details:not([open]){
   background-color: #181818;
 }
 
+.swiper-slide {
+  -webkit-user-select: text !important;
+     -moz-user-select: text !important;
+          user-select: text !important;
+}
+
 .hover\:bg-boxLight:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(217 200 232 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-transparent:hover {
+  background-color: transparent;
+}
+
+.hover\:bg-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(178 62 182 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:underline:hover {
@@ -1021,6 +1047,5 @@ details:not([open]){
     justify-content: space-evenly;
   }
 }
-
 
 

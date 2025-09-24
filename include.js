@@ -24,6 +24,8 @@ function cleanPath() {
 
 function loadSwiper() {
   const swiper = new Swiper(".mySwiper", {
+    touchStartPreventDefault: false,
+    allowTouchMove: true,
     loop: false,
     on: {
       slideChange: updateTabs,
@@ -36,7 +38,7 @@ function loadSwiper() {
     tab.addEventListener("click", () => {
       const index = parseInt(tab.dataset.slide);
       swiper.slideTo(index);
-      console.log("herer")
+      console.log("herer");
     });
   });
 
@@ -99,7 +101,6 @@ function loadEmailAddress() {
 }
 
 function loadContent() {
-
   fetch("/impressum.html")
     .then((res) => res.text())
     .then((data) => {
@@ -130,7 +131,7 @@ function loadContent() {
       loadEmailAddress();
     });
 
-          fetch("/Organisationen.html")
+  fetch("/Organisationen.html")
     .then((res) => res.text())
     .then((data) => {
       const element = document.getElementById("organisationen");

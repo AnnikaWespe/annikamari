@@ -16,5 +16,8 @@ details:not([open]){
   background-color: #181818;
 }
 
+.swiper-slide {
+  user-select: text !important;
+}
 
 

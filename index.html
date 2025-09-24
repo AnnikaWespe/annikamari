@@ -93,25 +93,24 @@
         </div>
 
         <div class="flex flex-col justify-center text-textOnBlack">
-          <h2 class="text-2xl font-semibold text-center mb-2">schauen.</h2>
+          <h2 class="text-2xl font-semibold text-center mb-2 mt-3">schauen.</h2>
 
           <h2 class="text-2xl font-semibold text-center mb-2">ordnen.</h2>
 
           <h2 class="text-2xl font-semibold text-center mb-2">bewegen.</h2>
         </div>
         <div class="flex justify-center gap-4 py-10">
-          <a
-            href="/Einzelpersonen.html"
-            class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
+          <button
+            @click="navigate('einzelpersonen')"
+            class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-primary transition-colors text-center"
           >
             Coaching und<br />Gruppen
-          </a>
-          <a
-            href="/Organisationen.html"
-            class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
+        </button>
+          <button
+            @click="navigate('organisationen')"
+            class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-primary transition-colors text-center"
           >
-            Organisations-<br />entwicklung</a
-          >
+            Organisations-<br />entwicklung</button>
         </div>
         <div class="flex justify-center space-x-2 mt-4 mb-16">
           <img src="assets/Logo_thick.svg" class="w-12 h-auto" alt="Logo" />
@@ -187,8 +186,8 @@
 
       <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <div id="coaching_range" class="swiper-slide"></div>
-          <div id="coaching_about" class="swiper-slide"></div>
+          <div id="coaching_range" class="swiper-slide select-text"></div>
+          <div id="coaching_about" class="swiper-slide select-text"></div>
         </div>
       </div>
 
