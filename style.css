@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  font-size: large;
-}
-
 .details-content {
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -16,6 +12,9 @@ body{
   max-height: 3000px; /* groß genug für den Inhalt */
 }
 
+details:not([open]){
+  background-color: #181818;
+}
 
 
 

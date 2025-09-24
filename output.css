@@ -746,9 +746,9 @@ video {
   border-style: none;
 }
 
-.border-creme {
+.border-brighterBackground {
   --tw-border-opacity: 1;
-  border-color: rgb(246 242 229 / var(--tw-border-opacity, 1));
+  border-color: rgb(226 190 223 / var(--tw-border-opacity, 1));
 }
 
 .border-primary {
@@ -777,12 +777,17 @@ video {
 
 .bg-brighterBackground {
   --tw-bg-opacity: 1;
-  background-color: rgb(238 219 237 / var(--tw-bg-opacity, 1));
+  background-color: rgb(226 190 223 / var(--tw-bg-opacity, 1));
 }
 
 .bg-header_background {
   --tw-bg-opacity: 1;
   background-color: rgb(31 28 28 / var(--tw-bg-opacity, 1));
+}
+
+.bg-secondary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 154 205 / var(--tw-bg-opacity, 1));
 }
 
 .p-4 {
@@ -872,6 +877,18 @@ video {
   line-height: 1rem;
 }
 
+.text-\[\.25em\] {
+  font-size: .25em;
+}
+
+.text-\[1\.5em\] {
+  font-size: 1.5em;
+}
+
+.text-\[1\.1em\] {
+  font-size: 1.1em;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -892,8 +909,8 @@ video {
   font-style: italic;
 }
 
-.tracking-widest {
-  letter-spacing: 0.1em;
+.tracking-\[\.25em\] {
+  letter-spacing: .25em;
 }
 
 .text-boxDark {
@@ -901,9 +918,9 @@ video {
   color: rgb(75 45 92 / var(--tw-text-opacity, 1));
 }
 
-.text-creme {
+.text-brighterBackground {
   --tw-text-opacity: 1;
-  color: rgb(246 242 229 / var(--tw-text-opacity, 1));
+  color: rgb(226 190 223 / var(--tw-text-opacity, 1));
 }
 
 .text-headingAccent {
@@ -951,10 +968,6 @@ video {
   transition-duration: 300ms;
 }
 
-body{
-  font-size: large;
-}
-
 .details-content {
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -964,6 +977,10 @@ body{
 .details-content.open {
   max-height: 3000px;
   /* groß genug für den Inhalt */
+}
+
+details:not([open]){
+  background-color: #181818;
 }
 
 .hover\:bg-boxLight:hover {
@@ -1004,7 +1021,6 @@ body{
     justify-content: space-evenly;
   }
 }
-
 
 
 

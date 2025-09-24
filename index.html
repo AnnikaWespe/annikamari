@@ -79,12 +79,14 @@
             direkt
           </div>
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-textAccentOnBrighterBackground border-2 text-textAccentOnBrighterBackground flex items-center justify-center font-medium tracking-widest"
+            class="sm:w-40 sm:h-40 w-32 h-32 border-textAccentOnBrighterBackground border-2
+             text-textAccentOnBrighterBackground flex items-center 
+             justify-center font-medium tracking-[.25em]"
           >
             offen
           </div>
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-creme border-2 text-creme flex items-center justify-center mx-auto font-light"
+            class="sm:w-40 sm:h-40 w-32 h-32 text-[1.1em] border-brighterBackground border-2 text-brighterBackground flex items-center justify-center mx-auto font-light"
           >
             präzise
           </div>
@@ -100,13 +102,13 @@
         <div class="flex justify-center gap-4 py-10">
           <a
             href="/Einzelpersonen.html"
-            class="bg-brighterBackground text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
+            class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
           >
             Coaching und<br />Gruppen
           </a>
           <a
             href="/Organisationen.html"
-            class="bg-brighterBackground text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
+            class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-boxLight transition-colors text-center"
           >
             Organisations-<br />entwicklung</a
           >
@@ -201,7 +203,7 @@
         class="bg-header_background p-4 flex justify-between items-center text-headingAccent mt-10"
       >
         <div>&copy; 2025 Annika Mari · Internationals Welcome</div>
-        <button @click="navigate('impressum')">Impressum · Datenschutz</button>
+        <button @click="navigate('impressum'); window.scrollTo({ top: 0, behavior: 'smooth' })">Impressum · Datenschutz</button>
       </footer>
     </div>
   </body>
