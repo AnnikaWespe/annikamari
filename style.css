@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body{
+  font-size: large;
+}
+
 .details-content {
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -12,18 +16,6 @@
   max-height: 3000px; /* groß genug für den Inhalt */
 }
 
-@keyframes boxEnter {
-  0% {
-    transform: translateY(-40px) rotate(-1deg);
-    opacity: 0;
-  }
-  60% {
-    transform: translateY(10px) rotate(2deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0) rotate(0deg);
-  }
-}
+
 
 
