@@ -754,7 +754,7 @@ video {
 
 .border-brighterBackground {
   --tw-border-opacity: 1;
-  border-color: rgb(226 190 223 / var(--tw-border-opacity, 1));
+  border-color: rgb(243 229 242 / var(--tw-border-opacity, 1));
 }
 
 .border-primary {
@@ -783,7 +783,7 @@ video {
 
 .bg-brighterBackground {
   --tw-bg-opacity: 1;
-  background-color: rgb(226 190 223 / var(--tw-bg-opacity, 1));
+  background-color: rgb(243 229 242 / var(--tw-bg-opacity, 1));
 }
 
 .bg-header_background {
@@ -835,14 +835,6 @@ video {
 
 .pl-4 {
   padding-left: 1rem;
-}
-
-.pr-2 {
-  padding-right: 0.5rem;
-}
-
-.pr-4 {
-  padding-right: 1rem;
 }
 
 .text-center {
@@ -918,7 +910,7 @@ video {
 
 .text-brighterBackground {
   --tw-text-opacity: 1;
-  color: rgb(226 190 223 / var(--tw-text-opacity, 1));
+  color: rgb(243 229 242 / var(--tw-text-opacity, 1));
 }
 
 .text-headingAccent {

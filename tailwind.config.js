@@ -14,7 +14,7 @@ module.exports = {
         boxLight: "#D9C8E8",
         headingAccent: "#8a82b0",
         headingAccentDark: "#544c78",
-        brighterBackground: "#e2bedf",
+        brighterBackground: "#f3e5f2",
         textOnBlack: "#8a82b0",
         textOnBrighterBackground: "#3A2246",
         textAccentOnBrighterBackground: "#943fa7"
