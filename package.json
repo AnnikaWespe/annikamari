@@ -13,6 +13,7 @@
     "tailwindcss": "^3.3.5"
   },
   "dependencies": {
+    "add-to-calendar-button": "^2.11.5",
     "alpinejs": "^3.15.0"
   }
 }

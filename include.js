@@ -119,6 +119,7 @@ function loadContent() {
         element.innerHTML = data;
       }
       loadEmailAddress();
+      loadTable();
     });
 
   fetch("/pages/coaching_about.html")
@@ -140,4 +141,60 @@ function loadContent() {
       }
       loadEmailAddress();
     });
+}
+
+function loadTable() {
+  // feste Datenpunkte
+  const termine = [
+    {
+      datum: "2025-09-30",
+      start: "10:15",
+      end: "11:30",
+      ort: "World Wide Web",
+    },
+    {
+      datum: "2025-10-15",
+      start: "09:00",
+      end: "10:00",
+      ort: "World Wide Web",
+    },
+  ];
+
+  function buildTable() {
+    const table = document.createElement("table");
+
+    termine.forEach((t) => {
+      const tr = document.createElement("tr");
+
+      // Spalte 1: Mailto-Link
+      const td1 = document.createElement("td");
+      const mail = document.createElement("a");
+      mail.href = `mailto:kontakt@annikamari.de?subject=Anmeldung%20Systemische%20Simulation%20${t.datum}`;
+      mail.textContent = "Anmelden";
+      td1.appendChild(mail);
+
+      // Spalte 2: Add-to-calendar-button
+      const td2 = document.createElement("td");
+      td2.innerHTML = `
+      <add-to-calendar-button
+        name="Systemische Simulation"
+        options="'Apple','Google'"
+        location="${t.ort}"
+        startDate="${t.datum}"
+        endDate="${t.datum}"
+        startTime="${t.start}"
+        endTime="${t.end}"
+        timeZone="Europe/Berlin"
+      ></add-to-calendar-button>
+    `;
+
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+      table.appendChild(tr);
+    });
+
+    return table;
+  }
+  const container = document.getElementById("datumsTabelle");
+  container.appendChild(buildTable());
 }
