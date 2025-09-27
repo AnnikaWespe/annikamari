@@ -147,16 +147,20 @@ function loadTable() {
   // feste Datenpunkte
   const termine = [
     {
-      datum: "2025-09-30",
-      start: "10:15",
-      end: "11:30",
-      ort: "World Wide Web",
+      tag: "05",
+      monat: "10",
+      jahr: "2025",
+      start: "10:00",
+      end: "12:30",
+      ort: "Schmellerstraße 9, 80336 München",
     },
     {
-      datum: "2025-10-15",
-      start: "09:00",
-      end: "10:00",
-      ort: "World Wide Web",
+      tag: "12",
+      monat: "10",
+      jahr: "2025",
+      start: "16:00",
+      end: "18:30",
+      ort: "Schmellerstraße 9, 80336 München",
     },
   ];
 
@@ -169,7 +173,7 @@ function loadTable() {
       // Spalte 1: Mailto-Link
       const td1 = document.createElement("td");
       const mail = document.createElement("a");
-      mail.href = `mailto:kontakt@annikamari.de?subject=Anmeldung%20Systemische%20Simulation%20${t.datum}`;
+      mail.href = `mailto:kontakt@annikamari.de?subject=Anmeldung%20Systemische%20Simulation%20${t.tag}.${t.monat}.${t.jahr}`;
       mail.textContent = "Anmelden";
       td1.appendChild(mail);
 
@@ -180,8 +184,8 @@ function loadTable() {
         name="Systemische Simulation"
         options="'Apple','Google'"
         location="${t.ort}"
-        startDate="${t.datum}"
-        endDate="${t.datum}"
+        startDate="${t.jahr}-${t.monat}-${t.tag}"
+        endDate="${t.jahr}-${t.monat}-${t.tag}"
         startTime="${t.start}"
         endTime="${t.end}"
         timeZone="Europe/Berlin"
