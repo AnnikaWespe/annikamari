@@ -171,27 +171,38 @@ function loadTable() {
       const tr = document.createElement("tr");
 
       // Spalte 1: Mailto-Link
+
+      const td0 = document.createElement("td");
+      td0.innerHTML = `${t.tag}.${t.monat}.${t.jahr}<br>${t.start}-${t.end}`;
       const td1 = document.createElement("td");
       const mail = document.createElement("a");
-      mail.href = `mailto:kontakt@annikamari.de?subject=Anmeldung%20Systemische%20Simulation%20${t.tag}.${t.monat}.${t.jahr}`;
+      mail.href = `mailto:kontakt@annikamari.de?subject=Anmeldung%20Systemische%20Simulation%20${t.tag}.${t.monat}.${t.jahr}%20${t.start}-${t.end}`;
       mail.textContent = "Anmelden";
+      const classList = ["mailto-btn", "mailto-btn-hover", "mailto-btn-active"];
+      mail.classList.add(...classList);
       td1.appendChild(mail);
 
       // Spalte 2: Add-to-calendar-button
       const td2 = document.createElement("td");
       td2.innerHTML = `
-      <add-to-calendar-button
-        name="Systemische Simulation"
-        options="'Apple','Google'"
-        location="${t.ort}"
-        startDate="${t.jahr}-${t.monat}-${t.tag}"
-        endDate="${t.jahr}-${t.monat}-${t.tag}"
-        startTime="${t.start}"
-        endTime="${t.end}"
-        timeZone="Europe/Berlin"
-      ></add-to-calendar-button>
-    `;
+<add-to-calendar-button
+  name="Systemische Simulation" 
+  location="${t.ort}" 
+  startDate="${t.jahr}-${t.monat}-${t.tag}" 
+  endDate="${t.jahr}-${t.monat}-${t.tag}" 
+  startTime="${t.start}" 
+  endTime="${t.end}" 
+  timeZone="Europe/Berlin" 
+  description="Check out the maybe easiest way to include Add to Calendar Buttons to your web projects:[br]→ [url]https://add-to-calendar-button.com/|Click here![/url]"
+  options="'Apple','Google','iCal','Outlook.com'"
+  buttonsList
+  hideTextLabelButton
+  buttonStyle="round"
+  lightMode="dark"
+></add-to-calendar-button>
+`;
 
+      tr.appendChild(td0);
       tr.appendChild(td1);
       tr.appendChild(td2);
       table.appendChild(tr);

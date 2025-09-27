@@ -26,4 +26,67 @@ details:not([open]){
   user-select: text !important;
 }
 
+/* Basis-Style: grau, schlicht */
+add-to-calendar-button::part(atcb-button) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 0.3rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+add-to-calendar-button::part(atcb-button-icon) {
+  width: 28px;
+  height: 28px;
+  fill: #aaa !important;   /* neutrales Grau */
+  color: #aaa !important;
+  transition: fill 0.2s ease, color 0.2s ease;
+}
+
+/* Text, falls eingeblendet */
+add-to-calendar-button::part(atcb-button-text) {
+  color: #aaa !important;
+  font-weight: 500;
+}
+
+/* Hover-Effekt: edel und klar sichtbar */
+add-to-calendar-button::part(atcb-button):hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50%;
+  transform: scale(1.1);
+}
+
+add-to-calendar-button::part(atcb-button-icon):hover {
+  fill: #fff !important;   /* wird hell auf dunklem Hintergrund */
+  color: #fff !important;
+}
+
+.mailto-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #D19ACD;
+  color:  #4B2D5C;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),
+              0 2px 4px -2px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.mailto-btn-hover:hover {
+  background-color: #B23EB6;
+}
+
+.mailto-btn-active:active {
+  transform: scale(0.95);
+}
+
+#datumsTabelle{
+  td{
+    padding: 1em;
+  }
+}
 
