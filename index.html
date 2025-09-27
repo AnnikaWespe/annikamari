@@ -34,6 +34,7 @@
           },
           navigate(to) {
             window.location.hash = to;
+            window.scrollTo({ top: 0, behavior: 'smooth' })
           },
         };
       }
@@ -74,28 +75,28 @@
       <main class="p-6 flex flex-col items-center" x-show="route === 'home'">
         <div class="flex flex-wrap justify-center gap-2 p-8">
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-secondary border-2 text-secondary flex items-center justify-center font-bold"
+            class="sm:w-40 sm:h-40 w-32 h-32 border-secondary border-2 text-secondary flex items-center justify-center font-light text-[1.2em]"
           >
-            direkt
+            aufmerksam
           </div>
           <div
             class="sm:w-40 sm:h-40 w-32 h-32 border-textAccentOnBrighterBackground border-2
              text-textAccentOnBrighterBackground flex items-center 
              justify-center font-medium tracking-[.25em]"
           >
-            offen
+            kreativ
           </div>
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 text-[1.1em] border-brighterBackground border-2 text-brighterBackground flex items-center justify-center mx-auto font-light"
+            class="sm:w-40 sm:h-40 w-32 h-32  border-brighterBackground border-2 text-brighterBackground flex items-center justify-center mx-auto font-semibold"
           >
-            präzise
+            pragmatisch
           </div>
         </div>
 
         <div class="flex flex-col justify-center text-textOnBlack">
-          <h2 class="text-2xl font-semibold text-center mb-2 mt-3">schauen.</h2>
+          <h2 class="text-2xl font-semibold text-center mb-2 mt-3">öffnen.</h2>
 
-          <h2 class="text-2xl font-semibold text-center mb-2">ordnen.</h2>
+          <h2 class="text-2xl font-semibold text-center mb-2">entfalten.</h2>
 
           <h2 class="text-2xl font-semibold text-center mb-2">bewegen.</h2>
         </div>
@@ -117,7 +118,7 @@
         </div>
 
         <section class="text-cream">
-          <h2 class="text-2xl font-bold text-primary mb-6">
+          <h2 class="text-3xl text-textAccentOnBrighterBackground mb-6 text-center">
             Wer ist Annika Mari?
           </h2>
 
@@ -199,10 +200,10 @@
         class="bg-brighterBackground text-textOnBrighterBackground p-4"
       ></main>
       <footer
-        class="bg-header_background p-4 flex justify-between items-center text-headingAccent mt-10"
+        class="bg-header_background p-4 flex justify-between items-center text-headingAccent"
       >
         <div>&copy; 2025 Annika Mari · Internationals Welcome</div>
-        <button @click="navigate('impressum'); window.scrollTo({ top: 0, behavior: 'smooth' })">Impressum · Datenschutz</button>
+        <button @click="navigate('impressum')">Impressum · Datenschutz</button>
       </footer>
     </div>
   </body>

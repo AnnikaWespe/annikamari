@@ -11,6 +11,12 @@
 .details-content.open {
   max-height: 3000px; /* groß genug für den Inhalt */
 }
+details:open{
+  summary{
+  color: #B23EB6;
+
+  }
+}
 
 details:not([open]){
   background-color: #181817;
