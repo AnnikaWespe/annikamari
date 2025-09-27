@@ -26,40 +26,51 @@ details:not([open]){
   user-select: text !important;
 }
 
-/* Basis-Style: grau, schlicht */
-add-to-calendar-button::part(atcb-button) {
+/* Gemeinsamer Wrapper für alle Buttons */
+.atcb-custom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;     /* feste Breite */
+  height: 36px;    /* feste Höhe */
+  margin: 0 6px;
+  flex-shrink: 0;  /* verhindert, dass sich Buttons zusammenquetschen */
+}
+
+/* Basis-Style: neutral, kein Hintergrund */
+.atcb-custom::part(atcb-button) {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
-  margin: 0 0.3rem;
-  transition: transform 0.2s ease, background 0.2s ease;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transform: none !important;   /* alle Bewegungen deaktivieren */
 }
 
-add-to-calendar-button::part(atcb-button-icon) {
-  width: 28px;
-  height: 28px;
-  fill: #aaa !important;   /* neutrales Grau */
+/* Icon normal */
+.atcb-custom::part(atcb-button-icon) {
+  width: 24px !important;
+  height: 24px !important;
+  fill: #aaa !important;  /* Grau */
   color: #aaa !important;
-  transition: fill 0.2s ease, color 0.2s ease;
+  transition: fill 0.2s ease, color 0.2s ease; /* nur sanftes Farbwechseln */
 }
 
-/* Text, falls eingeblendet */
-add-to-calendar-button::part(atcb-button-text) {
-  color: #aaa !important;
-  font-weight: 500;
+/* Icon Hover → nur Farbe, kein Sprung */
+.atcb-custom::part(atcb-button):hover {
+  background: none !important;
+  transform: none !important;
 }
 
-/* Hover-Effekt: edel und klar sichtbar */
-add-to-calendar-button::part(atcb-button):hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 50%;
-  transform: scale(1.1);
-}
-
-add-to-calendar-button::part(atcb-button-icon):hover {
-  fill: #fff !important;   /* wird hell auf dunklem Hintergrund */
+.atcb-custom::part(atcb-button-icon):hover {
+  fill: #fff !important;   /* Weiß */
   color: #fff !important;
 }
+
+
+
 
 .mailto-btn {
   display: inline-flex;
@@ -80,9 +91,6 @@ add-to-calendar-button::part(atcb-button-icon):hover {
   background-color: #B23EB6;
 }
 
-.mailto-btn-active:active {
-  transform: scale(0.95);
-}
 
 #datumsTabelle{
   td{

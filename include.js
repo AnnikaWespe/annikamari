@@ -162,6 +162,22 @@ function loadTable() {
       end: "18:30",
       ort: "Schmellerstraße 9, 80336 München",
     },
+        {
+      tag: "19",
+      monat: "10",
+      jahr: "2025",
+      start: "16:00",
+      end: "18:30",
+      ort: "Schmellerstraße 9, 80336 München",
+    },
+        {
+      tag: "26",
+      monat: "10",
+      jahr: "2025",
+      start: "16:00",
+      end: "18:30",
+      ort: "Schmellerstraße 9, 80336 München",
+    },
   ];
 
   function buildTable() {
@@ -183,24 +199,31 @@ function loadTable() {
       td1.appendChild(mail);
 
       // Spalte 2: Add-to-calendar-button
-      const td2 = document.createElement("td");
-      td2.innerHTML = `
-<add-to-calendar-button
-  name="Systemische Simulation" 
-  location="${t.ort}" 
-  startDate="${t.jahr}-${t.monat}-${t.tag}" 
-  endDate="${t.jahr}-${t.monat}-${t.tag}" 
-  startTime="${t.start}" 
-  endTime="${t.end}" 
-  timeZone="Europe/Berlin" 
-  description="Check out the maybe easiest way to include Add to Calendar Buttons to your web projects:[br]→ [url]https://add-to-calendar-button.com/|Click here![/url]"
-  options="'Apple','Google','iCal','Outlook.com'"
-  buttonsList
-  hideTextLabelButton
-  buttonStyle="round"
-  lightMode="dark"
-></add-to-calendar-button>
-`;
+const td2 = document.createElement("td");
+
+const calendars = ["Apple", "Google", "iCal", "Outlook.com"];
+
+calendars.forEach((cal) => {
+  const btn = document.createElement("add-to-calendar-button");
+  btn.className = "atcb-custom";
+  btn.setAttribute("name", "Systemische Simulation");
+  btn.setAttribute("location", t.ort);
+  btn.setAttribute("startDate", `${t.jahr}-${t.monat}-${t.tag}`);
+  btn.setAttribute("endDate", `${t.jahr}-${t.monat}-${t.tag}`);
+  btn.setAttribute("startTime", t.start);
+  btn.setAttribute("endTime", t.end);
+  btn.setAttribute("timeZone", "Europe/Berlin");
+  btn.setAttribute("options", `'${cal}'`);
+  btn.setAttribute("hideTextLabelButton", "");
+  btn.setAttribute("buttonStyle", "round");
+  btn.setAttribute("lightMode", "dark");
+
+  td2.appendChild(btn);
+});
+
+tr.appendChild(td2);
+
+
 
       tr.appendChild(td0);
       tr.appendChild(td1);
