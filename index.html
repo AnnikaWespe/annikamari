@@ -35,7 +35,7 @@
           },
           navigate(to) {
             window.location.hash = to;
-            window.scrollTo({ top: 0, behavior: 'smooth' })
+            window.scrollTo({ top: 0, behavior: "smooth" });
           },
         };
       }
@@ -50,13 +50,16 @@
         class="bg-header_background p-4 flex justify-between items-center"
       >
         <a href="/index.html">
-          <div class="flex flex-row space-x-2">
-            <img src="assets/Logo.svg" class="w-5 h-auto" alt="Logo" />
+          <div class="flex flex-row space-x-3 items-center">
+            <img src="assets/Logo.svg" class="w-8 h-auto" alt="Logo" />
             <h1 class="text-lg sm:text-xl font-bold text-headingAccent">
               Annika <span class="sm:hidden"><br /></span>Mari
             </h1>
+           
           </div>
         </a>
+        <img src="assets/Innenwirktaußen.png" class="w-48 h-auto" alt="Logo" />
+
         <nav>
           <button
             class="text-headingAccent text-xs sm:text-base mr-4"
@@ -81,14 +84,12 @@
             aufmerksam
           </div>
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-textAccentOnBrighterBackground border-2
-             text-textAccentOnBrighterBackground flex items-center 
-             justify-center font-medium tracking-[.25em]"
+            class="sm:w-40 sm:h-40 w-32 h-32 border-textAccentOnBrighterBackground border-2 text-textAccentOnBrighterBackground flex items-center justify-center font-medium tracking-[.25em]"
           >
             kreativ
           </div>
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32  border-brighterBackground border-2 text-brighterBackground flex items-center justify-center mx-auto font-semibold"
+            class="sm:w-40 sm:h-40 w-32 h-32 border-brighterBackground border-2 text-brighterBackground flex items-center justify-center mx-auto font-semibold"
           >
             pragmatisch
           </div>
@@ -107,19 +108,22 @@
             class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-primary transition-colors text-center"
           >
             Coaching und<br />Gruppen
-        </button>
+          </button>
           <button
             @click="navigate('organisationen')"
             class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-primary transition-colors text-center"
           >
-            Organisations-<br />entwicklung</button>
+            Organisations-<br />entwicklung
+          </button>
         </div>
         <div class="flex justify-center space-x-2 mt-4 mb-16">
-          <img src="assets/Logo_thick.svg" class="w-12 h-auto" alt="Logo" />
+          <img src="assets/Logo_thick.svg" class="w-6 h-auto" alt="Logo" />
         </div>
 
         <section class="text-cream">
-          <h2 class="text-3xl text-textAccentOnBrighterBackground mb-6 text-center">
+          <h2
+            class="text-3xl text-textAccentOnBrighterBackground mb-6 text-center"
+          >
             Wer ist Annika Mari?
           </h2>
 
@@ -170,29 +174,28 @@
           </div>
         </section>
       </main>
-      <main  x-show="route === 'einzelpersonen'">
-              <div class="flex justify-around md:justify-evenly mb-6 mt-2">
-        <button
-          class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary bg-background border-secondary border-2"
-          data-slide="0"
-        >
-          Angebot
-        </button>
-        <button
-          class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary"
-          data-slide="1"
-        >
-          About
-        </button>
-      </div>
-
-      <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div id="coaching_range" class="swiper-slide select-text"></div>
-          <div id="coaching_about" class="swiper-slide select-text"></div>
+      <main x-show="route === 'einzelpersonen'">
+        <div class="flex justify-around md:justify-evenly mb-6 mt-2">
+          <button
+            class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary bg-background border-secondary border-2"
+            data-slide="0"
+          >
+            Angebot
+          </button>
+          <button
+            class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary"
+            data-slide="1"
+          >
+            About
+          </button>
         </div>
-      </div>
 
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div id="coaching_range" class="swiper-slide select-text"></div>
+            <div id="coaching_about" class="swiper-slide select-text"></div>
+          </div>
+        </div>
       </main>
       <main id="organisationen" x-show="route === 'organisationen'"></main>
       <main
