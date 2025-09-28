@@ -647,6 +647,10 @@ video {
   width: 1rem;
 }
 
+.w-5 {
+  width: 1.25rem;
+}
+
 .w-6 {
   width: 1.5rem;
 }
@@ -1053,6 +1057,74 @@ details:not([open]){
   td{
     padding: 1em;
   }
+}
+
+/* Container für die Icon-Gruppe in der Zelle */
+
+.icon-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  /* Abstand zwischen Icons */
+}
+
+/* Icon-Link-Wrapper */
+
+.icon-btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:32px;
+  /* feste Box -> kein Springen */
+  height:32px;
+  color:#b7a9d4;
+  /* dein helles Violett */
+  transition:color .2s ease-in-out;
+  text-decoration:none;
+}
+
+/* Hover-Farbe (nur Farbe, keine Größe/Border -> kein Layout-Shift) */
+
+.icon-btn:hover{
+  color:#ffffff;
+}
+
+/* Tooltip via data-tip */
+
+.icon-btn::after{
+  content:attr(data-tip);
+  position:absolute;
+  left:50%;
+  bottom:100%;
+  transform:translate(-50%,-6px);
+  padding:4px 6px;
+  font-size:12px;
+  line-height:1;
+  white-space:nowrap;
+  color:#fff;
+  background:rgba(0,0,0,.8);
+  border-radius:4px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .15s, transform .15s;
+}
+
+.icon-btn:hover::after{
+  opacity:1;
+  transform:translate(-50%,-10px);
+}
+
+/* Alle eingebetteten SVGs sollen die Textfarbe nutzen */
+
+.icon-btn svg{
+  width:24px;
+  height:24px;
+  display:block;
+  fill:currentColor;
+  /* wichtig! */
+  stroke:currentColor;
+  /* falls Pfade gestroked sind */
 }
 
 .hover\:bg-primary:hover {

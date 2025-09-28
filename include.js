@@ -202,7 +202,7 @@ function loadTable() {
       // Spalte 3: Kalender-Icons
       const td2 = document.createElement("td");
       const iconsWrapper = document.createElement("div");
-      iconsWrapper.className = "flex items-center space-x-4";
+      iconsWrapper.className = "flex items-center gap-x-4";
 
       // Links vorbereiten
       const dateStr = `${t.jahr}-${t.monat}-${t.tag}`;
@@ -230,18 +230,25 @@ END:VCALENDAR`;
       const icsUrl = URL.createObjectURL(icsBlob);
 
       // Funktion zum Bauen der Icon-Links
-      function makeIcon(href, svg, downloadName) {
-        const a = document.createElement("a");
-        a.href = href;
-        a.target = "_blank";
-        if (downloadName) {
-          a.setAttribute("download", downloadName);
-          a.removeAttribute("target");
-        }
-        a.innerHTML = svg;
-        a.className = "text-purple-300 hover:text-white transition";
-        return a;
-      }
+// href: Link, svg: SVG-String, label: Tooltip-Text, downloadName(optional)
+function makeIcon(href, svg, label, downloadName) {
+  const a = document.createElement("a");
+  a.href = href;
+  if (downloadName) {
+    a.setAttribute("download", downloadName);
+    a.removeAttribute("target");
+  } else {
+    a.target = "_blank";
+    a.rel = "noopener";
+  }
+  a.className = "icon-btn";
+  a.setAttribute("data-tip", label);
+  a.innerHTML = svg; // SVG muss fill="currentColor" nutzen
+  return a;
+}
+
+
+
 
       const appleSvg = `<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" class="w-6 h-6"><path fill="currentColor" d="M16.365 1.43c0 1.14-.41 2.14-1.23 2.96-.82.82-1.75 1.27-2.79 1.23-.05-1.09.38-2.06 1.17-2.89.8-.82 1.76-1.31 2.85-1.3zM20.515 17.65c-.3.68-.67 1.33-1.11 1.93-.6.87-1.09 1.47-1.48 1.8-.59.55-1.23.84-1.91.86-.49 0-1.09-.14-1.8-.44-.71-.3-1.37-.44-1.98-.44-.65 0-1.34.15-2.08.44-.74.3-1.32.45-1.75.47-.65.03-1.32-.27-2.01-.9-.43-.38-.95-1.01-1.55-1.91-.67-1.01-1.22-2.18-1.64-3.51-.45-1.49-.68-2.93-.68-4.34 0-1.6.34-2.98 1.02-4.13.54-.91 1.26-1.62 2.16-2.14.9-.52 1.87-.8 2.9-.83.57 0 1.32.16 2.24.47.91.31 1.5.47 1.77.47.2 0 .83-.2 1.89-.59.99-.36 1.82-.51 2.51-.44 1.86.15 3.26.88 4.2 2.18-1.66 1.01-2.49 2.43-2.5 4.27 0 1.42.52 2.61 1.55 3.56.46.43.96.75 1.5.98-.12.34-.25.66-.4.97z"/></svg>`;
       const googleSvg = `<svg xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24" class="w-6 h-6"><path fill="currentColor" d="M21.35 11.1H12v2.8h5.35c-.25 1.6-1.92 4.7-5.35 4.7-3.22 0-5.85-2.67-5.85-5.9s2.63-5.9 5.85-5.9c1.83 0 3.05.78 3.75 1.46l2.58-2.5C16.92 3.8 14.7 2.9 12 2.9 6.9 2.9 2.9 6.9 2.9 12s4 9.1 9.1 9.1c5.25 0 8.7-3.7 8.7-8.9 0-.6-.05-1.1-.15-1.6z"/></svg>`;
@@ -249,10 +256,11 @@ END:VCALENDAR`;
       const icalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
   <path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 16H5V10h14v10Zm0-12H5V6h14v2Z"/>`;
 
-      iconsWrapper.appendChild(makeIcon(appleLink, appleSvg));
-      iconsWrapper.appendChild(makeIcon(googleLink, googleSvg));
-      iconsWrapper.appendChild(makeIcon(outlookLink, outlookSvg));
-      iconsWrapper.appendChild(makeIcon(icsUrl, icalSvg, "event.ics"));
+      iconsWrapper.appendChild(makeIcon(appleLink, appleSvg, "Apple", "event.ics"));
+      iconsWrapper.appendChild(makeIcon(googleLink, googleSvg, "Google"));
+      iconsWrapper.appendChild(makeIcon(outlookLink, outlookSvg, "Outlook"));
+      iconsWrapper.appendChild(makeIcon(icsContent, icalSvg, "iCal", "event.ics"));
+
 
       td2.appendChild(iconsWrapper);
 
