@@ -46,34 +46,41 @@
       x-data="router()"
       x-init="setRoute(); window.addEventListener('hashchange', () => setRoute())"
     >
-      <header
-        class="bg-header_background p-4 flex justify-between items-center"
-      >
-        <a href="/index.html">
-          <div class="flex flex-row space-x-3 items-center">
-            <img src="assets/Logo.svg" class="w-8 h-auto" alt="Logo" />
-            <h1 class="text-lg sm:text-xl font-bold text-headingAccent">
-              Annika <span class="sm:hidden"><br /></span>Mari
-            </h1>
-           
-          </div>
-        </a>
-        <img src="assets/Innenwirktaußen.png" class="w-48 h-auto" alt="Logo" />
-
-        <nav>
-          <button
-            class="text-headingAccent text-xs sm:text-base mr-4"
-            @click="navigate('einzelpersonen')"
-          >
-            Einzelpersonen
+      <header class="bg-header_background w-full">
+        <div class="flex items-center justify-between px-4 py-3 w-full">
+          <!-- Logo-Block -->
+          <button @click="navigate('')">
+            <div class="flex items-center gap-3">
+              <img src="assets/Logo.svg" class="w-8 h-8 mt-[-1em]" alt="Logo" />
+              <div>
+                <h1
+                  class="text-lg sm:text-xl font-bold text-headingAccent text-left"
+                >
+                  Annika Mari
+                </h1>
+                <img
+                  src="assets/1000000044.png"
+                  class="w-36 h-auto mt-1"
+                  alt="Slogan"
+                />
+              </div>
+            </div>
           </button>
-          <button
-            class="text-headingAccent text-xs sm:text-base mr-4"
-            @click="navigate('organisationen')"
-          >
-            Organisationen
-          </button>
-        </nav>
+          <nav>
+            <button
+              class="text-headingAccent text-xs sm:text-base mr-4"
+              @click="navigate('einzelpersonen')"
+            >
+              Einzelpersonen
+            </button>
+            <button
+              class="text-headingAccent text-xs sm:text-base mr-4"
+              @click="navigate('organisationen')"
+            >
+              Organisationen
+            </button>
+          </nav>
+        </div>
       </header>
 
       <main class="p-6 flex flex-col items-center" x-show="route === 'home'">
@@ -96,9 +103,11 @@
         </div>
 
         <div class="flex flex-col justify-center text-textOnBlack">
-          <h2 class="text-2xl font-semibold text-center mb-2 mt-3">öffnen.</h2>
+          <h2 class="text-2xl font-semibold text-center mb-2 mt-3">
+            lauschen.
+          </h2>
 
-          <h2 class="text-2xl font-semibold text-center mb-2">entfalten.</h2>
+          <h2 class="text-2xl font-semibold text-center mb-2">vermitteln.</h2>
 
           <h2 class="text-2xl font-semibold text-center mb-2">bewegen.</h2>
         </div>
