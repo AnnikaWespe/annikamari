@@ -38,7 +38,6 @@ function loadSwiper() {
     tab.addEventListener("click", () => {
       const index = parseInt(tab.dataset.slide);
       swiper.slideTo(index);
-      console.log("herer");
     });
   });
 
