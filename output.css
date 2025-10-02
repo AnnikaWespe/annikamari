@@ -1103,6 +1103,7 @@ details:not([open]) {
   /* dein helles Violett */
   transition: color 0.2s ease-in-out;
   text-decoration: none;
+  margin: 0 0.3em;
 }
 
 /* Hover-Farbe (nur Farbe, keine Größe/Border -> kein Layout-Shift) */
@@ -1182,6 +1183,12 @@ details:not([open]) {
   }
 }
 
+@media (min-width: 700px) {
+  .icon-btn{
+    margin: 0 0.5em;
+  }
+}
+
 .hover\:bg-primary:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(178 62 182 / var(--tw-bg-opacity, 1));
@@ -1224,3 +1231,5 @@ details:not([open]) {
     justify-content: space-evenly;
   }
 }
+
+

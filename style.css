@@ -110,6 +110,7 @@ details:not([open]) {
   color: #b7a9d4; /* dein helles Violett */
   transition: color 0.2s ease-in-out;
   text-decoration: none;
+  margin: 0 0.3em;
 }
 
 /* Hover-Farbe (nur Farbe, keine Größe/Border -> kein Layout-Shift) */
@@ -184,4 +185,14 @@ details:not([open]) {
   .datumsTabelleGrid .item-b {
     text-align: left;
   }
+
 }
+
+@media (min-width: 700px) {
+  .icon-btn{
+    margin: 0 0.5em;
+  }
+
+}
+
+
