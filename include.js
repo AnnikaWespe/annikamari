@@ -180,30 +180,30 @@ function loadTable() {
   ];
 
   function buildTable() {
-    const table = document.createElement("table");
-    const websiteUrl = "https://annikamari.de/#einzelpersonen"
+    const table = document.createElement("div");
+    table.className = "gap-y-5";
+    const websiteUrl = "https://annikamari.de/#einzelpersonen";
     const encodedWebsiteUrl = encodeURIComponent(websiteUrl);
 
     termine.forEach((t) => {
-      const tr = document.createElement("tr");
+      const tr = document.createElement("div");
+          tr.style = "padding:0.5em";
+
+
+      tr.className =
+        "grid grid-rows-3 sm:grid-rows-1 md:grid-cols-3 gap-x-1 gap-y-1 w-full";
 
       // Spalte 1: Datum & Uhrzeit
-      const td0 = document.createElement("td");
-      td0.innerHTML = `${t.tag}.${t.monat}.${t.jahr}<br>${t.start}-${t.end}`;
+      const td0 = document.createElement("div");
+      td0.innerHTML = `${t.tag}.${t.monat}.${t.jahr} ${t.start}-${t.end}`;
 
-      // Spalte 2: Mailto-Link
-      const td1 = document.createElement("td");
-      const mail = document.createElement("a");
-      mail.href = `mailto:kontakt@annikamari.de?subject=Anmeldung%20Systemische%20Simulation%20${t.tag}.${t.monat}.${t.jahr}%20${t.start}-${t.end}`;
-      mail.textContent = "Anmelden";
-      const classList = ["mailto-btn", "mailto-btn-hover", "mailto-btn-active"];
-      mail.classList.add(...classList);
-      td1.appendChild(mail);
+      // Spalte 2: Kalender-Icons
+      const td1 = document.createElement("div");
 
-      // Spalte 3: Kalender-Icons
-      const td2 = document.createElement("td");
       const iconsWrapper = document.createElement("div");
       iconsWrapper.className = "flex items-center gap-x-4";
+                  iconsWrapper.style="justify-content:center";
+
 
       // Links vorbereiten
       const dateStr = `${t.jahr}-${t.monat}-${t.tag}`;
@@ -211,14 +211,16 @@ function loadTable() {
         t.jahr
       }${t.monat}${t.tag}T${t.start.replace(":", "")}00/${t.jahr}${t.monat}${
         t.tag
-      }T${t.end.replace(":", "")}00&location=${encodeURIComponent(t.ort)}&details=${encodedWebsiteUrl}`;
+      }T${t.end.replace(":", "")}00&location=${encodeURIComponent(
+        t.ort
+      )}&details=${encodedWebsiteUrl}`;
       const outlookLink = `https://outlook.live.com/calendar/0/deeplink/compose?subject=Systemische+Simulation&body=${encodedWebsiteUrl}&location=${encodeURIComponent(
         t.ort
       )}&startdt=${t.jahr}-${t.monat}-${t.tag}T${t.start}:00&enddt=${t.jahr}-${
         t.monat
       }-${t.tag}T${t.end}:00`;
       const appleLink = "https://www.icloud.com/calendar/";
-const icalData = `BEGIN:VCALENDAR
+      const icalData = `BEGIN:VCALENDAR
 VERSION:2.0
 BEGIN:VEVENT
 SUMMARY:Systemische Simulation
@@ -229,15 +231,15 @@ DESCRIPTION:${websiteUrl}
 END:VEVENT
 END:VCALENDAR`;
 
-const blob = new Blob([icalData], { type: "text/calendar" });
-const url = URL.createObjectURL(blob);
+      const blob = new Blob([icalData], { type: "text/calendar" });
+      const url = URL.createObjectURL(blob);
 
-const icalLink = document.createElement("a");
-icalLink.href = url;
-icalLink.download = `simulation_${t.jahr}-${t.monat}-${t.tag}.ics`;
-icalLink.className = "icon-btn";
-icalLink.setAttribute("data-tip", "iCal");
-icalLink.innerHTML = `
+      const icalLink = document.createElement("a");
+      icalLink.href = url;
+      icalLink.download = `simulation_${t.jahr}-${t.monat}-${t.tag}.ics`;
+      icalLink.className = "icon-btn";
+      icalLink.setAttribute("data-tip", "iCal");
+      icalLink.innerHTML = `
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6">
     <path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 16H5V10h14v10Zm0-12H5V6h14v2Z"></path>
   </svg>
@@ -255,7 +257,7 @@ icalLink.innerHTML = `
         }
         a.className = "icon-btn";
         a.setAttribute("data-tip", label);
-        a.innerHTML = svg; 
+        a.innerHTML = svg;
         return a;
       }
 
@@ -271,7 +273,17 @@ icalLink.innerHTML = `
 
       iconsWrapper.appendChild(icalLink);
 
-      td2.appendChild(iconsWrapper);
+      td1.appendChild(iconsWrapper);
+
+      // Spalte 3: Mailto-Link
+      const td2 = document.createElement("div");
+      td2.style="text-align:right";
+      const mail = document.createElement("a");
+      mail.href = `mailto:kontakt@annikamari.de?subject=Anmeldung%20Systemische%20Simulation%20${t.tag}.${t.monat}.${t.jahr}%20${t.start}-${t.end}`;
+      mail.textContent = "Anmelden";
+      const classList = ["mailto-btn", "mailto-btn-hover", "mailto-btn-active"];
+      mail.classList.add(...classList);
+      td2.appendChild(mail);
 
       tr.appendChild(td0);
       tr.appendChild(td1);
@@ -285,4 +297,3 @@ icalLink.innerHTML = `
   const container = document.getElementById("datumsTabelle");
   container.appendChild(buildTable());
 }
-
