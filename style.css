@@ -158,7 +158,7 @@ details:not([open]) {
 
   grid-template-areas:
     "a c"
-    "b c";
+    "b b";
 
   
 }

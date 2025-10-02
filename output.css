@@ -1156,7 +1156,7 @@ details:not([open]) {
   margin-bottom: 1em;
   grid-template-areas:
     "a c"
-    "b c";
+    "b b";
 }
 
 .datumsTabelleGrid .item-a {
