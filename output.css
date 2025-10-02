@@ -591,8 +591,8 @@ video {
   margin-bottom: 1.75rem;
 }
 
-.mr-4 {
-  margin-right: 1rem;
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .mt-1 {
@@ -613,10 +613,6 @@ video {
 
 .mt-\[-1em\] {
   margin-top: -1em;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
 }
 
 .flex {
@@ -989,13 +985,13 @@ video {
   /* groß genug für den Inhalt */
 }
 
-details:open{
-  summary{
-    color: #B23EB6;
+details:open {
+  summary {
+    color: #b23eb6;
   }
 }
 
-details:not([open]){
+details:not([open]) {
   background-color: #181817;
 }
 
@@ -1067,89 +1063,123 @@ details:not([open]){
   border-radius: 0.5rem;
   font-weight: 600;
   color: #fff;
-  background-color: #D19ACD;
-  color:  #4B2D5C;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),
-              0 2px 4px -2px rgba(0,0,0,0.1);
+  background-color: #d19acd;
+  color: #4b2d5c;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
 
 .mailto-btn-hover:hover {
-  background-color: #B23EB6;
+  background-color: #b23eb6;
 }
 
-#datumsTabelle{
-  td{
+#datumsTabelle {
+  td {
     padding: 1em;
   }
 }
 
 /* Container für die Icon-Gruppe in der Zelle */
 
-.icon-row{
-  display:flex;
-  align-items:center;
-  gap:12px;
+.icon-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   /* Abstand zwischen Icons */
 }
 
 /* Icon-Link-Wrapper */
 
-.icon-btn{
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:32px;
+.icon-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
   /* feste Box -> kein Springen */
-  height:32px;
-  color:#b7a9d4;
+  height: 32px;
+  color: #b7a9d4;
   /* dein helles Violett */
-  transition:color .2s ease-in-out;
-  text-decoration:none;
+  transition: color 0.2s ease-in-out;
+  text-decoration: none;
 }
 
 /* Hover-Farbe (nur Farbe, keine Größe/Border -> kein Layout-Shift) */
 
-.icon-btn:hover{
-  color:#ffffff;
+.icon-btn:hover {
+  color: #ffffff;
 }
 
 /* Tooltip via data-tip */
 
-.icon-btn::after{
-  content:attr(data-tip);
-  position:absolute;
-  left:50%;
-  bottom:100%;
-  transform:translate(-50%,-6px);
-  padding:4px 6px;
-  font-size:12px;
-  line-height:1;
-  white-space:nowrap;
-  color:#fff;
-  background:rgba(0,0,0,.8);
-  border-radius:4px;
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .15s, transform .15s;
+.icon-btn::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: 100%;
+  transform: translate(-50%, -6px);
+  padding: 4px 6px;
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s, transform 0.15s;
 }
 
-.icon-btn:hover::after{
-  opacity:1;
-  transform:translate(-50%,-10px);
+.icon-btn:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -10px);
 }
 
 /* Alle eingebetteten SVGs sollen die Textfarbe nutzen */
 
-.icon-btn svg{
-  width:24px;
-  height:24px;
-  display:block;
-  fill:currentColor;
+.icon-btn svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  fill: currentColor;
   /* wichtig! */
-  stroke:currentColor;
+  stroke: currentColor;
   /* falls Pfade gestroked sind */
+}
+
+.datumsTabelleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  margin-bottom: 1em;
+  grid-template-areas:
+    "a c"
+    "b c";
+}
+
+.datumsTabelleGrid .item-a {
+  grid-area: a;
+}
+
+.datumsTabelleGrid .item-b {
+  grid-area: b;
+}
+
+.datumsTabelleGrid .item-c {
+  grid-area: c;
+  text-align: right;
+}
+
+@media (min-width: 640px) {
+  .datumsTabelleGrid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "a b c";
+  }
+
+  .datumsTabelleGrid .item-b {
+    text-align: left;
+  }
 }
 
 .hover\:bg-primary:hover {
@@ -1162,16 +1192,20 @@ details:not([open]){
 }
 
 @media (min-width: 640px) {
+  .sm\:hidden {
+    display: none;
+  }
+
   .sm\:h-40 {
     height: 10rem;
   }
 
-  .sm\:w-40 {
-    width: 10rem;
-  }
-
   .sm\:w-36 {
     width: 9rem;
+  }
+
+  .sm\:w-40 {
+    width: 10rem;
   }
 
   .sm\:text-base {
@@ -1190,4 +1224,3 @@ details:not([open]){
     justify-content: space-evenly;
   }
 }
-
