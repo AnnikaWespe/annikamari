@@ -32,22 +32,40 @@ function loadImageBoxes() {
     const inner  = box.querySelector(".flip-inner");
     const back   = box.querySelector(".flip-back");
 
-    // Startzustand
     let currentIndex = -1;
     let rotation = 0;
+    let showingBack = false;
     let hoverInterval = null;
 
     inner.style.transform = "rotateY(0deg)";
 
-    function rotateAndChangeImage() {
-      if (!images.length) return;
+    function flipToBackWithNextImage() {
       currentIndex = (currentIndex + 1) % images.length;
       back.style.backgroundImage = `url("${images[currentIndex]}")`;
       rotation += 180;
       inner.style.transform = `rotateY(${rotation}deg)`;
+      showingBack = true;
     }
 
-    // Optional: einmal nach 1.5s zufällig 0–3x flippen
+    function flipToFront() {
+      rotation += 180;
+      inner.style.transform = `rotateY(${rotation}deg)`;
+      showingBack = false;
+    }
+
+    function rotateAndChangeImage() {
+      if (!images.length) return;
+
+      if (showingBack) {
+        // Wir sind hinten → zurück nach vorne (kein Bildwechsel)
+        flipToFront();
+      } else {
+        // Wir sind vorne → Bild wechseln und nach hinten flippen
+        flipToBackWithNextImage();
+      }
+    }
+
+    // ✨ Zufälliger Startflip nach 1,5 s (wie vorher)
     const rotations = Math.floor(Math.random() * 4);
     let i = 0;
     setTimeout(() => {
@@ -55,19 +73,28 @@ function loadImageBoxes() {
         rotateAndChangeImage();
         i++;
         if (i >= rotations) clearInterval(interval);
-      }, 800);
+      }, 1600);
     }, 1500);
 
-    // Desktop: weiterflippen solange Hover
+    // ✨ Hover-Logik
     box.addEventListener("mouseenter", () => {
-      if (!hoverInterval) hoverInterval = setInterval(rotateAndChangeImage, 800);
+      // Direkt beim Hovern einmal flippen
+      rotateAndChangeImage();
+      // Dann Intervall starten
+      hoverInterval = setInterval(rotateAndChangeImage, 1600);
     });
+
     box.addEventListener("mouseleave", () => {
       clearInterval(hoverInterval);
       hoverInterval = null;
     });
   });
 }
+
+document.addEventListener("DOMContentLoaded", loadImageBoxes);
+
+
+document.addEventListener("DOMContentLoaded", loadImageBoxes);
 
 
 

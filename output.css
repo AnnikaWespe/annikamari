@@ -659,6 +659,10 @@ video {
   height: 100%;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
 .w-20 {
   width: 5rem;
 }
@@ -685,6 +689,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .max-w-4xl {
@@ -1279,12 +1287,28 @@ details:not([open]) {
     height: 10rem;
   }
 
+  .sm\:h-4 {
+    height: 1rem;
+  }
+
+  .sm\:h-48 {
+    height: 12rem;
+  }
+
   .sm\:w-36 {
     width: 9rem;
   }
 
   .sm\:w-40 {
     width: 10rem;
+  }
+
+  .sm\:w-4 {
+    width: 1rem;
+  }
+
+  .sm\:w-48 {
+    width: 12rem;
   }
 
   .sm\:text-base {
