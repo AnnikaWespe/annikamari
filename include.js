@@ -66,9 +66,19 @@ function loadImageBoxes() {
     }
 
     // Zufälliger Startflip nach 1,5 s
-setTimeout(() => {
-  rotateAndChangeImage();
-}, 1500);
+Promise.all(
+  images.map(src => new Promise(resolve => {
+    const img = new Image();
+    img.onload = resolve;
+    img.onerror = resolve; // auch bei Fehler weiterlaufen
+    img.src = src;
+  }))
+).then(() => {
+  setTimeout(() => {
+    rotateAndChangeImage();
+  }, 1000);
+});
+
 
 
     // Hover-Logik
