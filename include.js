@@ -2,11 +2,13 @@ const websiteUrl = "https://annikamari.de/#einzelpersonen";
 const encodedWebsiteUrl = encodeURIComponent(websiteUrl);
 document.addEventListener("DOMContentLoaded", function () {
   loadContent();
+  loadImageBoxes();
   loadDetailsBox();
   loadEmailAddress();
   loadSwiper();
 });
 cleanPath();
+
 
 function cleanPath() {
   const allowedPaths = [
@@ -23,6 +25,51 @@ function cleanPath() {
     window.history.replaceState({}, "", "/");
   }
 }
+
+function loadImageBoxes() {
+  document.querySelectorAll(".flip-box").forEach((box) => {
+    const images = JSON.parse(box.dataset.images || "[]");
+    const inner  = box.querySelector(".flip-inner");
+    const back   = box.querySelector(".flip-back");
+
+    // Startzustand
+    let currentIndex = -1;
+    let rotation = 0;
+    let hoverInterval = null;
+
+    inner.style.transform = "rotateY(0deg)";
+
+    function rotateAndChangeImage() {
+      if (!images.length) return;
+      currentIndex = (currentIndex + 1) % images.length;
+      back.style.backgroundImage = `url("${images[currentIndex]}")`;
+      rotation += 180;
+      inner.style.transform = `rotateY(${rotation}deg)`;
+    }
+
+    // Optional: einmal nach 1.5s zufällig 0–3x flippen
+    const rotations = Math.floor(Math.random() * 4);
+    let i = 0;
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        rotateAndChangeImage();
+        i++;
+        if (i >= rotations) clearInterval(interval);
+      }, 800);
+    }, 1500);
+
+    // Desktop: weiterflippen solange Hover
+    box.addEventListener("mouseenter", () => {
+      if (!hoverInterval) hoverInterval = setInterval(rotateAndChangeImage, 800);
+    });
+    box.addEventListener("mouseleave", () => {
+      clearInterval(hoverInterval);
+      hoverInterval = null;
+    });
+  });
+}
+
+
 
 function loadSwiper() {
   const swiper = new Swiper(".mySwiper", {

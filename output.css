@@ -554,6 +554,22 @@ video {
   display: none;
 }
 
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.left-0 {
+  left: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -637,6 +653,10 @@ video {
 
 .h-auto {
   height: auto;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-20 {
@@ -802,6 +822,14 @@ video {
 .bg-secondary {
   --tw-bg-opacity: 1;
   background-color: rgb(209 154 205 / var(--tw-bg-opacity, 1));
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-center {
+  background-position: center;
 }
 
 .p-4 {
@@ -970,8 +998,18 @@ video {
   transition-duration: 150ms;
 }
 
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .duration-300 {
   transition-duration: 300ms;
+}
+
+.duration-700 {
+  transition-duration: 700ms;
 }
 
 .details-content {
@@ -1189,6 +1227,40 @@ details:not([open]) {
   }
 }
 
+/*Boxen Startseite*/
+
+/* 3D-Flip Basics */
+
+.perspective {
+  perspective: 1000px;
+}
+
+.flip-inner {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform 0.8s;
+  will-change: transform;
+}
+
+/* Beide Seiten müssen deckungsgleich liegen */
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  /* top:0; right:0; bottom:0; left:0 */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Rückseite um 180° */
+
+.flip-back {
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-position: center;
+}
+
 .hover\:bg-primary:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(178 62 182 / var(--tw-bg-opacity, 1));
@@ -1231,5 +1303,4 @@ details:not([open]) {
     justify-content: space-evenly;
   }
 }
-
 

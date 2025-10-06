@@ -53,14 +53,11 @@
             <div class="flex items-center gap-3">
               <img src="assets/Logo.svg" class="w-8 h-8 mt-[-1em]" alt="Logo" />
               <div>
-                <h1
-                  class="sm:text-xl font-bold text-headingAccent text-left"
-                >
+                <h1 class="sm:text-xl font-bold text-headingAccent text-left">
                   Annika Mari
                 </h1>
                 <img
                   src="assets/Innenwirktaußen_shadow.png"
-                  
                   class="sm:w-36 w-24 h-auto mt-1"
                   alt="Innen wirkt außen"
                 />
@@ -87,21 +84,61 @@
       <main class="p-6 flex flex-col items-center" x-show="route === 'home'">
         <div class="flex flex-wrap justify-center gap-2 p-8">
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-secondary border-2 text-secondary flex items-center justify-center font-light text-[1.2em]"
+            class="flip-box sm:w-40 sm:h-40 w-32 h-32 border-secondary border-2 text-secondary flex items-center justify-center font-light text-[1.2em] relative perspective"
+            data-images='["assets/fotos/amuesiert.jpg", "assets/fotos/lachend.jpg", "assets/fotos/einheit.jpg"]'
           >
-            aufmerksam
+            <div
+              class="flip-inner w-full h-full transition-transform duration-700 preserve-3d"
+            >
+              <div
+                class="flip-front w-full h-full flex items-center justify-center backface-hidden"
+              >
+                aufmerksam
+              </div>
+              <div
+                class="flip-back w-full h-full absolute top-0 left-0 backface-hidden rotate-y-180 bg-cover bg-center"
+              ></div>
+            </div>
           </div>
+
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-textAccentOnBrighterBackground border-2 text-textAccentOnBrighterBackground flex items-center justify-center font-medium tracking-[.25em]"
+            class="flip-box sm:w-40 sm:h-40 w-32 h-32 border-textAccentOnBrighterBackground border-2 text-textAccentOnBrighterBackground flex items-center justify-center font-medium tracking-[.25em] relative perspective"
+            data-images='["assets/fotos/amuesiert.jpg", "assets/fotos/lachend.jpg", "assets/fotos/einheit.jpg"]'
           >
-            kreativ
+            <div
+              class="flip-inner w-full h-full transition-transform duration-700 preserve-3d"
+            >
+              <div
+                class="flip-front w-full h-full flex items-center justify-center backface-hidden"
+              >
+                kreativ
+              </div>
+              <div
+                class="flip-back w-full h-full absolute top-0 left-0 backface-hidden rotate-y-180 bg-cover bg-center"
+              ></div>
+            </div>
           </div>
+
           <div
-            class="sm:w-40 sm:h-40 w-32 h-32 border-brighterBackground border-2 text-brighterBackground flex items-center justify-center mx-auto font-semibold"
+            class="flip-box sm:w-40 sm:h-40 w-32 h-32 border-brighterBackground border-2 text-brighterBackground flex items-center justify-center mx-auto font-semibold relative perspective"
+            data-images='["assets/fotos/amuesiert.jpg", "assets/fotos/lachend.jpg", "assets/fotos/einheit.jpg"]'
           >
-            pragmatisch
+            <div
+              class="flip-inner w-full h-full transition-transform duration-700 preserve-3d"
+            >
+              <div
+                class="flip-front w-full h-full flex items-center justify-center backface-hidden"
+              >
+                pragmatisch
+              </div>
+              <div
+                class="flip-back w-full h-full absolute top-0 left-0 backface-hidden rotate-y-180 bg-cover bg-center"
+              ></div>
+            </div>
           </div>
         </div>
+
+
 
         <div class="flex flex-col justify-center text-textOnBlack">
           <h2 class="text-2xl font-semibold text-center mb-2 mt-3">
@@ -139,17 +176,15 @@
 
           <div class="grid grid-cols-[auto_auto] gap-x-4 gap-y-2">
             <div>
-              Systemische Coachin <br class="sm:hidden">
+              Systemische Coachin <br class="sm:hidden" />
               <span class="text-sm text-textOnBlack"
                 >(SySt, Hypnosystemik)</span
               >
             </div>
             <div class="border-l border-primary pl-4 italic">Fokus</div>
 
-                      
-
             <div>
-              Organisationsentwicklerin <br class="sm:hidden">
+              Organisationsentwicklerin <br class="sm:hidden" />
               <span class="text-sm text-headingAccent"
                 >(bei
                 <a
@@ -161,8 +196,8 @@
               >
             </div>
             <div class="border-l border-primary pl-4 italic">Räume</div>
-  <div>
-              Ausbilderin und Trainerin <br class="sm:hidden">
+            <div>
+              Ausbilderin und Trainerin <br class="sm:hidden" />
               <span class="text-sm text-headingAccent"
                 >(u.A.
                 <a
