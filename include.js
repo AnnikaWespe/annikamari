@@ -65,36 +65,68 @@ function loadImageBoxes() {
       }
     }
 
-    // ✨ Zufälliger Startflip nach 1,5 s (wie vorher)
-    const rotations = Math.floor(Math.random() * 4);
-    let i = 0;
-    setTimeout(() => {
-      const interval = setInterval(() => {
-        rotateAndChangeImage();
-        i++;
-        if (i >= rotations) clearInterval(interval);
-      }, 1600);
-    }, 1500);
+    // Zufälliger Startflip nach 1,5 s
+setTimeout(() => {
+  rotateAndChangeImage();
+}, 1500);
 
-    // ✨ Hover-Logik
+
+    // Hover-Logik
     box.addEventListener("mouseenter", () => {
       // Direkt beim Hovern einmal flippen
       rotateAndChangeImage();
       // Dann Intervall starten
-      hoverInterval = setInterval(rotateAndChangeImage, 1600);
+      hoverInterval = setInterval(rotateAndChangeImage, 1200);
     });
 
     box.addEventListener("mouseleave", () => {
       clearInterval(hoverInterval);
       hoverInterval = null;
     });
+
+        // Swipe (Mobil)
+    addSwipeSupport(box, rotateAndChangeImage);
+
+    // Tap (als Alternative für User, die nicht swipen)
+    box.addEventListener("click", () => {
+      rotateAndChangeImage();
+    });
   });
 }
 
-document.addEventListener("DOMContentLoaded", loadImageBoxes);
 
+function addSwipeSupport(box, onSwipe) {
+  let startX = 0;
+  let startY = 0;
+  let isSwiping = false;
 
-document.addEventListener("DOMContentLoaded", loadImageBoxes);
+  box.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) return;
+    const touch = e.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isSwiping = true;
+  });
+
+  box.addEventListener("touchmove", (e) => {
+    if (!isSwiping) return;
+    const touch = e.touches[0];
+    const dx = Math.abs(touch.clientX - startX);
+    const dy = Math.abs(touch.clientY - startY);
+    if (dy > dx) {
+      // vertikales Scrollen → Swipe abbrechen
+      isSwiping = false;
+      return;
+    }
+  });
+
+  box.addEventListener("touchend", (e) => {
+    if (!isSwiping) return;
+    isSwiping = false;
+    onSwipe(); // beim Loslassen einmal flippen
+  });
+}
+
 
 
 

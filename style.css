@@ -203,7 +203,7 @@ details:not([open]) {
 .flip-inner {
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
-  transition: transform 0.8s;
+  transition: transform 0.5s;
   will-change: transform;
 }
 
