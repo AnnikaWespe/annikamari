@@ -25,41 +25,6 @@ function cleanPath() {
   }
 }
 
-/* -----------------------------------
-   📱 Nur Swipe (kein Tap mehr)
------------------------------------ */
-function addSwipeSupport(box, onFlip) {
-  let startX = 0;
-  let startY = 0;
-  let isSwipe = false;
-
-  box.addEventListener("touchstart", (e) => {
-    if (e.touches.length !== 1) return;
-    const touch = e.touches[0];
-    startX = touch.clientX;
-    startY = touch.clientY;
-    isSwipe = false;
-  });
-
-  box.addEventListener("touchmove", (e) => {
-    const touch = e.touches[0];
-    const dx = Math.abs(touch.clientX - startX);
-    const dy = Math.abs(touch.clientY - startY);
-    if (dx > 10 && dx > dy) {
-      isSwipe = true;
-    }
-  });
-
-  box.addEventListener("touchend", () => {
-    if (isSwipe) {
-      onFlip();
-    }
-  });
-}
-
-/* -----------------------------------
-   🧠 Flip-Box Logik
------------------------------------ */
 function loadImageBoxes() {
   document.querySelectorAll(".flip-box").forEach((box) => {
     const images = JSON.parse(box.dataset.images || "[]");
@@ -71,16 +36,17 @@ function loadImageBoxes() {
     let showingBack = false;
     let hoverInterval = null;
 
-    inner.style.transform = "rotateY(0deg)";
-
+    // ---------- Bildwechsel ----------
     function flipToBackWithRandomImage() {
       if (!images.length) return;
       let newIndex;
       do {
         newIndex = Math.floor(Math.random() * images.length);
       } while (images.length > 1 && newIndex === currentIndex);
+
       currentIndex = newIndex;
       back.style.backgroundImage = `url("${images[currentIndex]}")`;
+
       rotation += 180;
       inner.style.transform = `rotateY(${rotation}deg)`;
       showingBack = true;
@@ -100,26 +66,35 @@ function loadImageBoxes() {
       }
     }
 
-    // Preload + Startflip
-    Promise.all(images.map(src => new Promise(res => {
-      const img = new Image();
-      img.onload = img.onerror = res;
-      img.src = src;
-    }))).then(() => {
-      setTimeout(rotateAndChangeImage, 1000);
-    });
+    // ---------- Preload & Startflip ----------
+    if (images.length > 0) {
+      Promise.all(
+        images.map(src => new Promise(resolve => {
+          const img = new Image();
+          img.onload = img.onerror = resolve;
+          img.src = src;
+        }))
+      ).then(() => {
+        setTimeout(() => {
+          rotateAndChangeImage();
+        }, 1000);
+      });
+    }
 
-    // Hover Desktop
+    // ---------- Hover (Desktop) ----------
     box.addEventListener("mouseenter", () => {
+      if ("ontouchstart" in window) return; // Mobil ignorieren
       rotateAndChangeImage();
       hoverInterval = setInterval(rotateAndChangeImage, 900);
     });
+
     box.addEventListener("mouseleave", () => {
+      if ("ontouchstart" in window) return;
       clearInterval(hoverInterval);
       hoverInterval = null;
     });
 
-    // Swipe Mobil
+    // ---------- Swipe (Mobil only) ----------
     let startX = 0, startY = 0, isSwipe = false;
     box.addEventListener("touchstart", (e) => {
       if (e.touches.length !== 1) return;
@@ -128,6 +103,7 @@ function loadImageBoxes() {
       startY = t.clientY;
       isSwipe = false;
     });
+
     box.addEventListener("touchmove", (e) => {
       const t = e.touches[0];
       const dx = Math.abs(t.clientX - startX);
@@ -136,13 +112,14 @@ function loadImageBoxes() {
         isSwipe = true;
       }
     });
+
     box.addEventListener("touchend", () => {
       if (isSwipe) {
         rotateAndChangeImage();
       }
     });
 
-    // 👇 Klicks auf Mobil komplett unterdrücken
+    // ---------- Tap explizit blockieren ----------
     box.addEventListener("click", (e) => {
       if ("ontouchstart" in window) {
         e.preventDefault();
@@ -151,6 +128,8 @@ function loadImageBoxes() {
     });
   });
 }
+
+
 
 
 
