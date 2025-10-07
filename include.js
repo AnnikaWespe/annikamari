@@ -19,32 +19,19 @@ function cleanPath() {
     "/Organisationen",
     "/Organisationen.html",
   ];
-
   const currentPath = window.location.pathname;
-
   if (!allowedPaths.includes(currentPath)) {
     window.history.replaceState({}, "", "/");
   }
 }
 
 /* -----------------------------------
-   🚫 Click auf Mobil unterdrücken
+   📱 Nur Swipe (kein Tap mehr)
 ----------------------------------- */
-document.addEventListener("click", (e) => {
-  if ("ontouchstart" in window) {
-    e.stopPropagation();
-    e.preventDefault();
-  }
-}, true);
-
-/* -----------------------------------
-   📱 Swipe + Tap Unterstützung (Touch only)
------------------------------------ */
-function addSwipeAndTapSupport(box, onFlip) {
+function addSwipeSupport(box, onFlip) {
   let startX = 0;
   let startY = 0;
   let isSwipe = false;
-  let tapLocked = false;
 
   box.addEventListener("touchstart", (e) => {
     if (e.touches.length !== 1) return;
@@ -64,10 +51,9 @@ function addSwipeAndTapSupport(box, onFlip) {
   });
 
   box.addEventListener("touchend", () => {
-    if (tapLocked) return;
-    onFlip();
-    tapLocked = true;
-    setTimeout(() => tapLocked = false, 600);
+    if (isSwipe) {
+      onFlip();
+    }
   });
 }
 
@@ -118,7 +104,7 @@ function loadImageBoxes() {
       }
     }
 
-    // 🖼 Bilder preloaden, dann 1x Flip nach 1 s
+    // 🖼 Preload + einmaliger Startflip
     Promise.all(
       images.map(src => new Promise(resolve => {
         const img = new Image();
@@ -143,10 +129,11 @@ function loadImageBoxes() {
       hoverInterval = null;
     });
 
-    // 📱 Mobil (Touch): Swipe & Tap
-    addSwipeAndTapSupport(box, rotateAndChangeImage);
+    // 📱 Mobil: nur Swipe
+    addSwipeSupport(box, rotateAndChangeImage);
   });
 }
+
 
 
 
