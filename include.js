@@ -39,13 +39,22 @@ function loadImageBoxes() {
 
     inner.style.transform = "rotateY(0deg)";
 
-    function flipToBackWithNextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      back.style.backgroundImage = `url("${images[currentIndex]}")`;
-      rotation += 180;
-      inner.style.transform = `rotateY(${rotation}deg)`;
-      showingBack = true;
-    }
+function flipToBackWithNextImage() {
+  if (!images.length) return;
+
+  let newIndex;
+  do {
+    newIndex = Math.floor(Math.random() * images.length);
+  } while (images.length > 1 && newIndex === currentIndex);
+
+  currentIndex = newIndex;
+  back.style.backgroundImage = `url("${images[currentIndex]}")`;
+
+  rotation += 180;
+  inner.style.transform = `rotateY(${rotation}deg)`;
+  showingBack = true;
+}
+
 
     function flipToFront() {
       rotation += 180;
@@ -263,14 +272,6 @@ function loadContent() {
 function loadTable() {
   // feste Datenpunkte
   const termine = [
-    {
-      tag: "05",
-      monat: "10",
-      jahr: "2025",
-      start: "16:00",
-      end: "18:30",
-      ort: "Schmellerstraße 9, 80336 München",
-    },
     {
       tag: "12",
       monat: "10",
