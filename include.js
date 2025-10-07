@@ -61,10 +61,11 @@ function addSwipeSupport(box, onFlip) {
    🧠 Flip-Box Logik
 ----------------------------------- */
 function loadImageBoxes() {
+  documenfunction loadImageBoxes() {
   document.querySelectorAll(".flip-box").forEach((box) => {
     const images = JSON.parse(box.dataset.images || "[]");
     const inner = box.querySelector(".flip-inner");
-    const back = box.querySelector(".flip-back");
+    const back  = box.querySelector(".flip-back");
 
     let currentIndex = -1;
     let rotation = 0;
@@ -75,15 +76,12 @@ function loadImageBoxes() {
 
     function flipToBackWithRandomImage() {
       if (!images.length) return;
-
       let newIndex;
       do {
         newIndex = Math.floor(Math.random() * images.length);
       } while (images.length > 1 && newIndex === currentIndex);
-
       currentIndex = newIndex;
       back.style.backgroundImage = `url("${images[currentIndex]}")`;
-
       rotation += 180;
       inner.style.transform = `rotateY(${rotation}deg)`;
       showingBack = true;
@@ -96,7 +94,6 @@ function loadImageBoxes() {
     }
 
     function rotateAndChangeImage() {
-      if (!images.length) return;
       if (showingBack) {
         flipToFront();
       } else {
@@ -104,37 +101,57 @@ function loadImageBoxes() {
       }
     }
 
-    // 🖼 Preload + einmaliger Startflip
-    Promise.all(
-      images.map(src => new Promise(resolve => {
-        const img = new Image();
-        img.onload = resolve;
-        img.onerror = resolve;
-        img.src = src;
-      }))
-    ).then(() => {
-      setTimeout(() => {
-        rotateAndChangeImage();
-      }, 1000);
+    // Preload + Startflip
+    Promise.all(images.map(src => new Promise(res => {
+      const img = new Image();
+      img.onload = img.onerror = res;
+      img.src = src;
+    }))).then(() => {
+      setTimeout(rotateAndChangeImage, 1000);
     });
 
-    // 🖱 Hover (Desktop)
+    // Hover Desktop
     box.addEventListener("mouseenter", () => {
       rotateAndChangeImage();
       hoverInterval = setInterval(rotateAndChangeImage, 900);
     });
-
     box.addEventListener("mouseleave", () => {
       clearInterval(hoverInterval);
       hoverInterval = null;
     });
 
-    // 📱 Mobil: nur Swipe
-    addSwipeSupport(box, rotateAndChangeImage);
+    // Swipe Mobil
+    let startX = 0, startY = 0, isSwipe = false;
+    box.addEventListener("touchstart", (e) => {
+      if (e.touches.length !== 1) return;
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      isSwipe = false;
+    });
+    box.addEventListener("touchmove", (e) => {
+      const t = e.touches[0];
+      const dx = Math.abs(t.clientX - startX);
+      const dy = Math.abs(t.clientY - startY);
+      if (dx > 10 && dx > dy) {
+        isSwipe = true;
+      }
+    });
+    box.addEventListener("touchend", () => {
+      if (isSwipe) {
+        rotateAndChangeImage();
+      }
+    });
+
+    // 👇 Klicks auf Mobil komplett unterdrücken
+    box.addEventListener("click", (e) => {
+      if ("ontouchstart" in window) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
   });
 }
-
-
 
 
 
