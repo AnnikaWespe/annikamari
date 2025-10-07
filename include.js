@@ -28,7 +28,17 @@ function cleanPath() {
 }
 
 /* -----------------------------------
-   📱 Swipe + Tap Unterstützung
+   🚫 Click auf Mobil unterdrücken
+----------------------------------- */
+document.addEventListener("click", (e) => {
+  if ("ontouchstart" in window) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
+}, true);
+
+/* -----------------------------------
+   📱 Swipe + Tap Unterstützung (Touch only)
 ----------------------------------- */
 function addSwipeAndTapSupport(box, onFlip) {
   let startX = 0;
@@ -54,7 +64,6 @@ function addSwipeAndTapSupport(box, onFlip) {
   });
 
   box.addEventListener("touchend", () => {
-    // Swipe oder Tap → genau 1 Flip
     if (tapLocked) return;
     onFlip();
     tapLocked = true;
@@ -63,7 +72,7 @@ function addSwipeAndTapSupport(box, onFlip) {
 }
 
 /* -----------------------------------
-   🧠 Hauptfunktion für Flip-Boxen
+   🧠 Flip-Box Logik
 ----------------------------------- */
 function loadImageBoxes() {
   document.querySelectorAll(".flip-box").forEach((box) => {
@@ -109,7 +118,7 @@ function loadImageBoxes() {
       }
     }
 
-    // 🖼 Preload + einmaliger Startflip
+    // 🖼 Bilder preloaden, dann 1x Flip nach 1 s
     Promise.all(
       images.map(src => new Promise(resolve => {
         const img = new Image();
@@ -134,10 +143,11 @@ function loadImageBoxes() {
       hoverInterval = null;
     });
 
-    // 📱 Mobil: Swipe & Tap in einem Rutsch
+    // 📱 Mobil (Touch): Swipe & Tap
     addSwipeAndTapSupport(box, rotateAndChangeImage);
   });
 }
+
 
 
 
