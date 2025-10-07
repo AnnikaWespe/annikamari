@@ -1,5 +1,6 @@
 const websiteUrl = "https://annikamari.de/#einzelpersonen";
 const encodedWebsiteUrl = encodeURIComponent(websiteUrl);
+
 document.addEventListener("DOMContentLoaded", function () {
   loadContent();
   loadImageBoxes();
@@ -7,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   loadEmailAddress();
   loadSwiper();
 });
-cleanPath();
 
+cleanPath();
 
 function cleanPath() {
   const allowedPaths = [
@@ -26,10 +27,14 @@ function cleanPath() {
   }
 }
 
+/* -----------------------------------
+   📱 Swipe + Tap Unterstützung
+----------------------------------- */
 function addSwipeAndTapSupport(box, onFlip) {
   let startX = 0;
   let startY = 0;
   let isSwipe = false;
+  let tapLocked = false;
 
   box.addEventListener("touchstart", (e) => {
     if (e.touches.length !== 1) return;
@@ -43,22 +48,28 @@ function addSwipeAndTapSupport(box, onFlip) {
     const touch = e.touches[0];
     const dx = Math.abs(touch.clientX - startX);
     const dy = Math.abs(touch.clientY - startY);
-    // horizontaler Swipe erkannt?
     if (dx > 10 && dx > dy) {
       isSwipe = true;
     }
   });
 
   box.addEventListener("touchend", () => {
-    onFlip(); // egal ob Tap oder Swipe → genau einmal flippen
+    // Swipe oder Tap → genau 1 Flip
+    if (tapLocked) return;
+    onFlip();
+    tapLocked = true;
+    setTimeout(() => tapLocked = false, 600);
   });
 }
 
+/* -----------------------------------
+   🧠 Hauptfunktion für Flip-Boxen
+----------------------------------- */
 function loadImageBoxes() {
   document.querySelectorAll(".flip-box").forEach((box) => {
     const images = JSON.parse(box.dataset.images || "[]");
-    const inner  = box.querySelector(".flip-inner");
-    const back   = box.querySelector(".flip-back");
+    const inner = box.querySelector(".flip-inner");
+    const back = box.querySelector(".flip-back");
 
     let currentIndex = -1;
     let rotation = 0;
@@ -98,7 +109,7 @@ function loadImageBoxes() {
       }
     }
 
-    // 🔸 Bilder vorladen, dann 1x Flip nach 1 Sekunde
+    // 🖼 Preload + einmaliger Startflip
     Promise.all(
       images.map(src => new Promise(resolve => {
         const img = new Image();
@@ -112,7 +123,7 @@ function loadImageBoxes() {
       }, 1000);
     });
 
-    // 🖱 Hover-Logik (Desktop)
+    // 🖱 Hover (Desktop)
     box.addEventListener("mouseenter", () => {
       rotateAndChangeImage();
       hoverInterval = setInterval(rotateAndChangeImage, 900);
@@ -123,142 +134,10 @@ function loadImageBoxes() {
       hoverInterval = null;
     });
 
-    // 📱 Mobil: Swipe & Tap (kein Click mehr!)
+    // 📱 Mobil: Swipe & Tap in einem Rutsch
     addSwipeAndTapSupport(box, rotateAndChangeImage);
   });
 }
-
-
-
-function addSwipeSupport(box, onSwipe) {
-  let startX = 0;
-  let startY = 0;
-  let isSwiping = false;
-
-  box.addEventListener("touchstart", (e) => {
-    if (e.touches.length !== 1) return;
-    const touch = e.touches[0];
-    startX = touch.clientX;
-    startY = touch.clientY;
-    isSwiping = true;
-  });
-
-  box.addEventListener("touchmove", (e) => {
-    if (!isSwiping) return;
-    const touch = e.touches[0];
-    const dx = Math.abs(touch.clientX - startX);
-    const dy = Math.abs(touch.clientY - startY);
-    if (dy > dx) {
-      isSwiping = false; // vertikal → abbrechen
-    }
-  });
-
-  box.addEventListener("touchend", (e) => {
-    if (!isSwiping) return;
-    isSwiping = false;
-    onSwipe();
-    // Swipe markieren, um Click zu unterdrücken
-    box.dataset.swiped = "true";
-    setTimeout(() => {
-      box.dataset.swiped = "false";
-    }, 300);
-  });
-}
-
-function loadImageBoxes() {
-  document.querySelectorAll(".flip-box").forEach((box) => {
-    const images = JSON.parse(box.dataset.images || "[]");
-    const inner  = box.querySelector(".flip-inner");
-    const back   = box.querySelector(".flip-back");
-
-    let currentIndex = -1;
-    let rotation = 0;
-    let showingBack = false;
-    let hoverInterval = null;
-    let tapLocked = false; // Tap-Entprellung
-
-    inner.style.transform = "rotateY(0deg)";
-
-    function flipToBackWithRandomImage() {
-      if (!images.length) return;
-
-      let newIndex;
-      do {
-        newIndex = Math.floor(Math.random() * images.length);
-      } while (images.length > 1 && newIndex === currentIndex);
-
-      currentIndex = newIndex;
-      back.style.backgroundImage = `url("${images[currentIndex]}")`;
-
-      rotation += 180;
-      inner.style.transform = `rotateY(${rotation}deg)`;
-      showingBack = true;
-    }
-
-    function flipToFront() {
-      rotation += 180;
-      inner.style.transform = `rotateY(${rotation}deg)`;
-      showingBack = false;
-    }
-
-    function rotateAndChangeImage() {
-      if (!images.length) return;
-      if (showingBack) {
-        flipToFront();
-      } else {
-        flipToBackWithRandomImage();
-      }
-    }
-
-    // 🔸 Bilder preloaden, dann einmal Flip nach ca. 1 s
-    Promise.all(
-      images.map(src => new Promise(resolve => {
-        const img = new Image();
-        img.onload = resolve;
-        img.onerror = resolve;
-        img.src = src;
-      }))
-    ).then(() => {
-      setTimeout(() => {
-        rotateAndChangeImage();
-      }, 1000);
-    });
-
-    // 🖱 Hover-Logik (Desktop)
-    box.addEventListener("mouseenter", () => {
-      rotateAndChangeImage();
-      hoverInterval = setInterval(rotateAndChangeImage, 900); // schneller Preview-Rhythmus
-    });
-
-    box.addEventListener("mouseleave", () => {
-      clearInterval(hoverInterval);
-      hoverInterval = null;
-    });
-
-    // 📱 Swipe (Mobil)
-    addSwipeSupport(box, rotateAndChangeImage);
-
-    // 📱 Tap (Mobil) mit Sperre & Swipe-Erkennung
-    box.addEventListener("click", (e) => {
-      if (!("ontouchstart" in window)) {
-        // Desktop: Click als Flip
-        rotateAndChangeImage();
-        return;
-      }
-
-      if (box.dataset.swiped === "true" || tapLocked) {
-        e.preventDefault();
-        return;
-      }
-
-      rotateAndChangeImage();
-      tapLocked = true;
-      setTimeout(() => tapLocked = false, 600);
-    });
-  });
-}
-
-
 
 
 
