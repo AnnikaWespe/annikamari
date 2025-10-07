@@ -26,6 +26,34 @@ function cleanPath() {
   }
 }
 
+function addSwipeAndTapSupport(box, onFlip) {
+  let startX = 0;
+  let startY = 0;
+  let isSwipe = false;
+
+  box.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) return;
+    const touch = e.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isSwipe = false;
+  });
+
+  box.addEventListener("touchmove", (e) => {
+    const touch = e.touches[0];
+    const dx = Math.abs(touch.clientX - startX);
+    const dy = Math.abs(touch.clientY - startY);
+    // horizontaler Swipe erkannt?
+    if (dx > 10 && dx > dy) {
+      isSwipe = true;
+    }
+  });
+
+  box.addEventListener("touchend", () => {
+    onFlip(); // egal ob Tap oder Swipe → genau einmal flippen
+  });
+}
+
 function loadImageBoxes() {
   document.querySelectorAll(".flip-box").forEach((box) => {
     const images = JSON.parse(box.dataset.images || "[]");
@@ -39,22 +67,21 @@ function loadImageBoxes() {
 
     inner.style.transform = "rotateY(0deg)";
 
-function flipToBackWithNextImage() {
-  if (!images.length) return;
+    function flipToBackWithRandomImage() {
+      if (!images.length) return;
 
-  let newIndex;
-  do {
-    newIndex = Math.floor(Math.random() * images.length);
-  } while (images.length > 1 && newIndex === currentIndex);
+      let newIndex;
+      do {
+        newIndex = Math.floor(Math.random() * images.length);
+      } while (images.length > 1 && newIndex === currentIndex);
 
-  currentIndex = newIndex;
-  back.style.backgroundImage = `url("${images[currentIndex]}")`;
+      currentIndex = newIndex;
+      back.style.backgroundImage = `url("${images[currentIndex]}")`;
 
-  rotation += 180;
-  inner.style.transform = `rotateY(${rotation}deg)`;
-  showingBack = true;
-}
-
+      rotation += 180;
+      inner.style.transform = `rotateY(${rotation}deg)`;
+      showingBack = true;
+    }
 
     function flipToFront() {
       rotation += 180;
@@ -64,38 +91,31 @@ function flipToBackWithNextImage() {
 
     function rotateAndChangeImage() {
       if (!images.length) return;
-
       if (showingBack) {
-        // Wir sind hinten → zurück nach vorne (kein Bildwechsel)
         flipToFront();
       } else {
-        // Wir sind vorne → Bild wechseln und nach hinten flippen
-        flipToBackWithNextImage();
+        flipToBackWithRandomImage();
       }
     }
 
-    // Zufälliger Startflip nach 1,5 s
-Promise.all(
-  images.map(src => new Promise(resolve => {
-    const img = new Image();
-    img.onload = resolve;
-    img.onerror = resolve; // auch bei Fehler weiterlaufen
-    img.src = src;
-  }))
-).then(() => {
-  setTimeout(() => {
-    rotateAndChangeImage();
-  }, 1000);
-});
+    // 🔸 Bilder vorladen, dann 1x Flip nach 1 Sekunde
+    Promise.all(
+      images.map(src => new Promise(resolve => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = resolve;
+        img.src = src;
+      }))
+    ).then(() => {
+      setTimeout(() => {
+        rotateAndChangeImage();
+      }, 1000);
+    });
 
-
-
-    // Hover-Logik
+    // 🖱 Hover-Logik (Desktop)
     box.addEventListener("mouseenter", () => {
-      // Direkt beim Hovern einmal flippen
       rotateAndChangeImage();
-      // Dann Intervall starten
-      hoverInterval = setInterval(rotateAndChangeImage, 1200);
+      hoverInterval = setInterval(rotateAndChangeImage, 900);
     });
 
     box.addEventListener("mouseleave", () => {
@@ -103,15 +123,11 @@ Promise.all(
       hoverInterval = null;
     });
 
-        // Swipe (Mobil)
-    addSwipeSupport(box, rotateAndChangeImage);
-
-    // Tap (als Alternative für User, die nicht swipen)
-    box.addEventListener("click", () => {
-      rotateAndChangeImage();
-    });
+    // 📱 Mobil: Swipe & Tap (kein Click mehr!)
+    addSwipeAndTapSupport(box, rotateAndChangeImage);
   });
 }
+
 
 
 function addSwipeSupport(box, onSwipe) {
