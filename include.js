@@ -133,18 +133,20 @@ function addSwipeSupport(box, onSwipe) {
     const dx = Math.abs(touch.clientX - startX);
     const dy = Math.abs(touch.clientY - startY);
     if (dy > dx) {
-      // vertikales Scrollen → Swipe abbrechen
       isSwiping = false;
-      return;
     }
   });
 
   box.addEventListener("touchend", (e) => {
     if (!isSwiping) return;
-    isSwiping = false;
-    onSwipe(); // beim Loslassen einmal flippen
+    onSwipe();
+    box.dataset.swiped = "true";
+    setTimeout(() => {
+      box.dataset.swiped = "false";
+    }, 300); // kurzer Puffer
   });
 }
+
 
 
 
