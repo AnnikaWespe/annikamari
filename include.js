@@ -61,7 +61,6 @@ function addSwipeSupport(box, onFlip) {
    🧠 Flip-Box Logik
 ----------------------------------- */
 function loadImageBoxes() {
-  documenfunction loadImageBoxes() {
   document.querySelectorAll(".flip-box").forEach((box) => {
     const images = JSON.parse(box.dataset.images || "[]");
     const inner = box.querySelector(".flip-inner");
