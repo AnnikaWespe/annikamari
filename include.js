@@ -131,22 +131,18 @@ function loadImageBoxes() {
     box._isShowingBack = () => showingBack;
   });
 
-  // 📢 Globale Swipe-Funktion
-  function triggerGlobalSwipe() {
-    // 1. Erst alle Boxen nach vorne (Textseite)
-    boxes.forEach((b) => {
-      if (b._isShowingBack()) {
-        b._flipToFront();
-      }
-    });
+function triggerGlobalSwipe() {
+  boxes.forEach((b) => {
+    if (b._isShowingBack()) {
+      // Wenn gerade Bild gezeigt wird → auf Textseite drehen
+      b._flipToFront();
+    } else {
+      // Wenn gerade Text gezeigt wird → neues Bild laden und nach hinten
+      b._flipToBackWithRandomImage();
+    }
+  });
+}
 
-    // 2. Dann nach kurzer Zeit alle mit neuem Bild nach hinten
-    setTimeout(() => {
-      boxes.forEach((b) => {
-        b._flipToBackWithRandomImage();
-      });
-    }, 500); // Text-Zeit auf ca. 0,5 s verlängert
-  }
 
 }
 
