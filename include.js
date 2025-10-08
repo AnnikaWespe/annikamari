@@ -26,7 +26,9 @@ function cleanPath() {
 }
 
 function loadImageBoxes() {
-  document.querySelectorAll(".flip-box").forEach((box) => {
+  const boxes = document.querySelectorAll(".flip-box");
+
+  boxes.forEach((box) => {
     const images = JSON.parse(box.dataset.images || "[]");
     const inner = box.querySelector(".flip-inner");
     const back  = box.querySelector(".flip-back");
@@ -36,17 +38,16 @@ function loadImageBoxes() {
     let showingBack = false;
     let hoverInterval = null;
 
-    // ---------- Bildwechsel ----------
+    inner.style.transform = "rotateY(0deg)";
+
     function flipToBackWithRandomImage() {
       if (!images.length) return;
       let newIndex;
       do {
         newIndex = Math.floor(Math.random() * images.length);
       } while (images.length > 1 && newIndex === currentIndex);
-
       currentIndex = newIndex;
       back.style.backgroundImage = `url("${images[currentIndex]}")`;
-
       rotation += 180;
       inner.style.transform = `rotateY(${rotation}deg)`;
       showingBack = true;
@@ -66,7 +67,7 @@ function loadImageBoxes() {
       }
     }
 
-    // ---------- Preload & Startflip ----------
+    // 🖼 Bilder preloaden + einmaliger Startflip
     if (images.length > 0) {
       Promise.all(
         images.map(src => new Promise(resolve => {
@@ -75,26 +76,23 @@ function loadImageBoxes() {
           img.src = src;
         }))
       ).then(() => {
-        setTimeout(() => {
-          rotateAndChangeImage();
-        }, 1000);
+        setTimeout(rotateAndChangeImage, 1000);
       });
     }
 
-    // ---------- Hover (Desktop) ----------
+    // 🖱 Hover Desktop
     box.addEventListener("mouseenter", () => {
-      if ("ontouchstart" in window) return; // Mobil ignorieren
+      if ("ontouchstart" in window) return;
       rotateAndChangeImage();
       hoverInterval = setInterval(rotateAndChangeImage, 900);
     });
-
     box.addEventListener("mouseleave", () => {
       if ("ontouchstart" in window) return;
       clearInterval(hoverInterval);
       hoverInterval = null;
     });
 
-    // ---------- Swipe (Mobil only) ----------
+    // 📱 Swipe (Mobil)
     let startX = 0, startY = 0, isSwipe = false;
     box.addEventListener("touchstart", (e) => {
       if (e.touches.length !== 1) return;
@@ -115,20 +113,42 @@ function loadImageBoxes() {
 
     box.addEventListener("touchend", () => {
       if (isSwipe) {
-        rotateAndChangeImage();
+        triggerGlobalSwipe();
       }
     });
 
-    // ---------- Tap explizit blockieren ----------
+    // Tap blocken (Mobil)
     box.addEventListener("click", (e) => {
       if ("ontouchstart" in window) {
         e.preventDefault();
         e.stopPropagation();
       }
     });
-  });
-}
 
+    // 📝 Damit jede Box ihre Funktionen kennt
+    box._flipToFront = flipToFront;
+    box._flipToBackWithRandomImage = flipToBackWithRandomImage;
+    box._isShowingBack = () => showingBack;
+  });
+
+  // 📢 Globale Swipe-Funktion
+  function triggerGlobalSwipe() {
+    // 1. Erst alle Boxen nach vorne (Textseite)
+    boxes.forEach((b) => {
+      if (b._isShowingBack()) {
+        b._flipToFront();
+      }
+    });
+
+    // 2. Dann nach kurzer Zeit alle mit neuem Bild nach hinten
+    setTimeout(() => {
+      boxes.forEach((b) => {
+        b._flipToBackWithRandomImage();
+      });
+    }, 500); // Text-Zeit auf ca. 0,5 s verlängert
+  }
+
+}
 
 
 
