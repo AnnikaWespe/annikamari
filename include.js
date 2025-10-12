@@ -1,4 +1,4 @@
-const websiteUrl = "https://annikamari.de/#einzelpersonen";
+const websiteUrl = "https://annikamari.de/#privatpersonen";
 const encodedWebsiteUrl = encodeURIComponent(websiteUrl);
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -14,8 +14,8 @@ cleanPath();
 function cleanPath() {
   const allowedPaths = [
     "/",
-    "/Einzelpersonen",
-    "/Einzelpersonen.html",
+    "/Privatpersonen",
+    "/Privatpersonen.html",
     "/Organisationen",
     "/Organisationen.html",
   ];

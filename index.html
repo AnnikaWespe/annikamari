@@ -53,7 +53,7 @@
             <div class="flex items-center gap-3">
               <img src="assets/Logo.svg" class="w-8 h-8 mt-[-1em]" alt="Logo" />
               <div>
-                <h1 class="sm:text-xl font-bold text-headingAccent text-left">
+                <h1 class="sm:text-xl font-bold text-textOnBlack text-left">
                   Annika Mari
                 </h1>
                 <img
@@ -66,13 +66,13 @@
           </button>
           <nav>
             <button
-              class="text-headingAccent text-xs sm:text-base sm-mr-4 mr-2"
-              @click="navigate('einzelpersonen')"
+              class="text-textOnBlack text-xs sm:text-base sm-mr-4 mr-2"
+              @click="navigate('privatpersonen')"
             >
-              Einzelpersonen
+              Privatpersonen
             </button>
             <button
-              class="text-headingAccent text-xs sm:text-base sm-mr-4 mr-2"
+              class="text-textOnBlack text-xs sm:text-base sm-mr-4 mr-2"
               @click="navigate('organisationen')"
             >
               Organisationen
@@ -103,7 +103,7 @@
 
           <div
             class="flip-box sm:w-48 sm:h-48 w-40 h-40 border-textAccentOnBrighterBackground border-2 text-textAccentOnBrighterBackground flex items-center justify-center font-medium tracking-[.25em] relative perspective"
-            data-images='["assets/fotos/kreativ1.jpg", "assets/fotos/kreativ3.jpg","assets/fotos/kreativ4.jpg","assets/fotos/kreativ5.jpg","assets/fotos/kreativA.jpg","assets/fotos/kreativH1.jpg","assets/fotos/kreativH2.jpg"]'
+            data-images='["assets/fotos/kreativ1.jpg", "assets/fotos/kreativ3.jpg","assets/fotos/kreativ4.jpg","assets/fotos/kreativ5.jpg","assets/fotos/kreativA.jpg","assets/fotos/kreativH1.jpg","assets/fotos/kreativH2.jpg","assets/fotos/kreativH3.jpg"]'
 
           >
             <div
@@ -152,7 +152,7 @@
         </div>
         <div class="flex justify-center gap-4 py-10">
           <button
-            @click="navigate('einzelpersonen')"
+            @click="navigate('privatpersonen')"
             class="bg-secondary text-boxDark px-4 py-2 rounded-lg font-medium hover:bg-primary transition-colors text-center"
           >
             Coaching und<br />Gruppen
@@ -186,12 +186,12 @@
 
             <div>
               Organisationsentwicklerin <br class="sm:hidden" />
-              <span class="text-sm text-headingAccent"
+              <span class="text-sm text-textOnBlack"
                 >(bei
                 <a
                   href="https://www.isys.de/"
                   target="_blank"
-                  class="italic text-headingAccent"
+                  class="italic text-textOnBlack"
                   >iSYS</a
                 >)</span
               >
@@ -199,12 +199,12 @@
             <div class="border-l border-primary pl-4 italic">Räume</div>
             <div>
               Ausbilderin und Trainerin <br class="sm:hidden" />
-              <span class="text-sm text-headingAccent"
+              <span class="text-sm text-textOnBlack"
                 >(u.A.
                 <a
                   href="/assets/IHK Ausbildereignungsschein.pdf"
                   target="_blank"
-                  class="italic text-headingAccent"
+                  class="italic text-textOnBlack"
                   >IHK</a
                 >)</span
               >
@@ -215,7 +215,7 @@
               <a
                 target="_blank"
                 href="https://softwareentwicklung.annikamari.de/"
-                class="text-sm italic text-headingAccent"
+                class="text-sm italic text-textOnBlack"
                 >(mehr dazu)</a
               >
             </div>
@@ -234,7 +234,7 @@
           </div>
         </section>
       </main>
-      <main x-show="route === 'einzelpersonen'">
+      <main x-show="route === 'privatpersonen'">
         <div class="flex justify-around md:justify-evenly mb-6 mt-2">
           <button
             class="w-20 h-20 slider-tab text-base font-medium transition-colors duration-300 text-secondary bg-background border-secondary border-2"
@@ -264,7 +264,7 @@
         class="bg-brighterBackground text-textOnBrighterBackground p-4"
       ></main>
       <footer
-        class="bg-header_background p-4 flex justify-between items-center text-headingAccent"
+        class="bg-header_background p-4 flex justify-between items-center text-textOnBlack"
       >
         <div>&copy; 2025 Annika Mari · Internationals Welcome</div>
         <button @click="navigate('impressum')">Impressum · Datenschutz</button>
