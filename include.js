@@ -281,11 +281,11 @@ function loadTable() {
       ort: "Schmellerstraße 9, 80336 München",
     },
     {
-      tag: "26",
+      tag: "25",
       monat: "10",
       jahr: "2025",
-      start: "16:00",
-      end: "18:30",
+      start: "17:30",
+      end: "20:00",
       ort: "Schmellerstraße 9, 80336 München",
     },
         {
