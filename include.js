@@ -273,14 +273,6 @@ function loadTable() {
   // feste Datenpunkte
   const termine = [
     {
-      tag: "12",
-      monat: "10",
-      jahr: "2025",
-      start: "10:00",
-      end: "12:30",
-      ort: "Schmellerstraße 9, 80336 München",
-    },
-    {
       tag: "19",
       monat: "10",
       jahr: "2025",
@@ -291,6 +283,14 @@ function loadTable() {
     {
       tag: "26",
       monat: "10",
+      jahr: "2025",
+      start: "16:00",
+      end: "18:30",
+      ort: "Schmellerstraße 9, 80336 München",
+    },
+        {
+      tag: "2",
+      monat: "11",
       jahr: "2025",
       start: "10:00",
       end: "12:30",
