@@ -289,7 +289,7 @@ function loadTable() {
       ort: "Schmellerstraße 9, 80336 München",
     },
         {
-      tag: "2",
+      tag: "02",
       monat: "11",
       jahr: "2025",
       start: "10:00",
