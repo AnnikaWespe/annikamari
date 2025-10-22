@@ -810,11 +810,12 @@ video {
 
 .bg-background {
   --tw-bg-opacity: 1;
-  background-color: rgb(24 24 24 / var(--tw-bg-opacity, 1));
+  background-color: rgb(2 1 39 / var(--tw-bg-opacity, 1));
 }
 
-.bg-boxDark\/50 {
-  background-color: rgb(75 45 92 / 0.5);
+.bg-boxDark {
+  --tw-bg-opacity: 1;
+  background-color: rgb(117 139 255 / var(--tw-bg-opacity, 1));
 }
 
 .bg-brighterBackground {
@@ -824,7 +825,7 @@ video {
 
 .bg-header_background {
   --tw-bg-opacity: 1;
-  background-color: rgb(31 28 28 / var(--tw-bg-opacity, 1));
+  background-color: rgb(2 1 48 / var(--tw-bg-opacity, 1));
 }
 
 .bg-secondary {
@@ -965,9 +966,9 @@ video {
   letter-spacing: .25em;
 }
 
-.text-boxDark {
+.text-background {
   --tw-text-opacity: 1;
-  color: rgb(75 45 92 / var(--tw-text-opacity, 1));
+  color: rgb(2 1 39 / var(--tw-text-opacity, 1));
 }
 
 .text-brighterBackground {
@@ -985,9 +986,19 @@ video {
   color: rgb(209 154 205 / var(--tw-text-opacity, 1));
 }
 
+.text-secondaryDarkened {
+  --tw-text-opacity: 1;
+  color: rgb(172 78 165 / var(--tw-text-opacity, 1));
+}
+
 .text-textAccentOnBrighterBackground {
   --tw-text-opacity: 1;
   color: rgb(148 63 167 / var(--tw-text-opacity, 1));
+}
+
+.text-textButtonFrontPage {
+  --tw-text-opacity: 1;
+  color: rgb(75 45 92 / var(--tw-text-opacity, 1));
 }
 
 .text-textOnBlack {
@@ -1038,7 +1049,7 @@ details:open {
 }
 
 details:not([open]) {
-  background-color: #181817;
+  background-color: #020127;
 }
 
 .swiper-slide {
@@ -1117,7 +1128,8 @@ details:not([open]) {
 }
 
 .mailto-btn-hover:hover {
-  background-color: #b23eb6;
+  background-color: #020130;
+  color: #9f98be;
 }
 
 #datumsTabelle {
@@ -1145,8 +1157,6 @@ details:not([open]) {
   width: 32px;
   /* feste Box -> kein Springen */
   height: 32px;
-  color: #b7a9d4;
-  /* dein helles Violett */
   transition: color 0.2s ease-in-out;
   text-decoration: none;
   margin: 0 0.3em;
@@ -1269,9 +1279,14 @@ details:not([open]) {
   background-position: center;
 }
 
-.hover\:bg-primary:hover {
+.hover\:bg-buttonHoverFrontpage:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(178 62 182 / var(--tw-bg-opacity, 1));
+  background-color: rgb(0 11 67 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:text-textOnBlack:hover {
+  --tw-text-opacity: 1;
+  color: rgb(159 152 190 / var(--tw-text-opacity, 1));
 }
 
 .hover\:underline:hover {

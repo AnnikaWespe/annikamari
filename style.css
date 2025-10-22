@@ -17,7 +17,7 @@ details:open {
 }
 
 details:not([open]) {
-  background-color: #181817;
+  background-color: #020127;
 }
 
 .swiper-slide {
@@ -83,7 +83,8 @@ details:not([open]) {
 }
 
 .mailto-btn-hover:hover {
-  background-color: #b23eb6;
+  background-color: #020130;
+  color: #9f98be; 
 }
 
 #datumsTabelle {
@@ -107,7 +108,6 @@ details:not([open]) {
   justify-content: center;
   width: 32px; /* feste Box -> kein Springen */
   height: 32px;
-  color: #b7a9d4; /* dein helles Violett */
   transition: color 0.2s ease-in-out;
   text-decoration: none;
   margin: 0 0.3em;
